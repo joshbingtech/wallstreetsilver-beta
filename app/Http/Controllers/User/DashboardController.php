@@ -26,7 +26,7 @@ class DashboardController extends Controller
         foreach ($tweets_array as $value) {
             array_push($tweets, array(
                 'text' => $value['text'],
-                'created_at' => $value['text'],
+                'created_at' => $value['created_at'],
                 'tweet_url' => "https://twitter.com/".$author."/status/".$value['id'],
                 'author_url' => "https://twitter.com/".$author,
                 'author' => $author
