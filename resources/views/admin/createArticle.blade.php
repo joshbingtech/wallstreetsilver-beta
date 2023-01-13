@@ -22,7 +22,7 @@
                     <h3 class="text-center"> Preview Article </h3>
                     <img id="article-thumbnail-preview" class="mt-3">
                     <h2 id="article-title-preview" class="text-center mt-3"></h2>
-                    <div id="article-content-preview" class="mt-3"></div>
+                    <div id="article-content-preview" class="mt-3 ck-content"></div>
                 </div>
             </div>
         </form>
