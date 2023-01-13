@@ -33,5 +33,7 @@ function convertDateTimeToDate($tstamp)
 }
 function convertDateTimeToDateTime($tstamp)
 {
-    return date('m/d G:i:s',strtotime($tstamp));
+    $date = new DateTime($tstamp, new DateTimeZone('UTC'));
+    $date->setTimezone(new DateTimeZone('America/New_York'));
+    return $date->format('m/d G:i:s');
 }
