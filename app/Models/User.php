@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +23,11 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
+        'profile_avatar_url',
+        'status',
+        'invite_token',
+        'invited_at'
     ];
 
     /**
@@ -41,4 +48,28 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function countAllRecords()
+    {
+        return $this->withTrashed()
+            ->count();
+    }
+
+    public function countAllAdmins()
+    {
+        return $this->withTrashed()->where('role', 0)
+            ->count();
+    }
+
+    public function countAllJournalists()
+    {
+        return $this->withTrashed()->where('role', 1)
+            ->count();
+    }
+
+    public function countAllUsers()
+    {
+        return $this->withTrashed()->where('role', 2)
+            ->count();
+    }
 }
