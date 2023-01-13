@@ -97,7 +97,7 @@
                                                     <a href="#"> Continue Reading </a>
                                                 </div>
                                                 <div class="article-publish-date">
-                                                    {{ convertDateTimeTo($article['created_at']) }}
+                                                    {{ convertDateTimeToDate($article['created_at']) }}
                                                 </div>
                                                 <div class="article-view">
                                                     <img src="{{ asset('images/icons/view-count.png') }}"> {{ $article['views'] }}

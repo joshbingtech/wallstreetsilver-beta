@@ -33,7 +33,7 @@
                                             </div>
                                             <div class="article-publish-date">
                                                 <div>
-                                                    {{ convertDateTimeTo($article['created_at']) }}
+                                                    {{ convertDateTimeToDate($article['created_at']) }}
                                                 </div>
                                                 <div class="article-view">
                                                     <img src="{{ asset('images/icons/view-count.png') }}"> {{ $article['views'] }}
@@ -51,7 +51,25 @@
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-md-6">
-                        Twitter Handle Feed
+                        <div class="tweets">
+                            <table class="flow-full-table" style="width: 100%;">
+                                <tbody>
+                                    @foreach ($tweets as $tweet)
+                                    <tr>
+                                        <td>
+                                            {{ convertDateTimeToDateTime($tweet['created_at']) }}
+                                        </td>
+                                        <td>
+                                            <div class="news">
+                                                <a href = "{{ $tweet['author_url'] }}"> {{ "@".$tweet['author'].": " }} </a>
+                                                <a class="news-text" href = "{{ $tweet['tweet_url'] }}"> {{ $tweet['text'] }} </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="featured-articles">
@@ -74,7 +92,7 @@
                                                 <a href="#"> Continue Reading </a>
                                             </div>
                                             <div class="article-publish-date">
-                                                {{ convertDateTimeTo($article['created_at']) }}
+                                                {{ convertDateTimeToDate($article['created_at']) }}
                                             </div>
                                             <div class="article-view">
                                                 <img src="{{ asset('images/icons/view-count.png') }}"> {{ $article['views'] }}

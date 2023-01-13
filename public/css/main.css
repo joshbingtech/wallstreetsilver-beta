@@ -698,3 +698,29 @@ table.dataTable.stripe tr.odd {
     display: block;
 }
 /* Create Article Page */
+
+/* Tweets Table */
+.flow-full-table td {
+    padding: 10px;
+    white-space: nowrap;
+}
+.flow-full-table td .news {
+    white-space: normal;
+    margin: 0 5px;
+    padding: 5px;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
+}
+.flow-full-table td a {
+    text-decoration: none;
+}
+.flow-full-table td a.news-text {
+    color: #FFFFFF;
+}
+.flow-full-table tr:nth-child(odd) {
+    background-color: rgba(137, 137, 137, 0.3);
+}
+.flow-full-table tr:nth-child(even) {
+    background-color: rgba(31, 31, 35, 0.8);
+}
+/* Tweets Table */

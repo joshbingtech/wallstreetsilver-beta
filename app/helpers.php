@@ -27,7 +27,11 @@ function character_limiter($str, $n = 500, $end_char = '&#8230;')
     }
 }
 
-function convertDateTimeTo($tstamp)
+function convertDateTimeToDate($tstamp)
 {
     return date('F j, Y',strtotime($tstamp));
+}
+function convertDateTimeToDateTime($tstamp)
+{
+    return date('m/d G:i:s',strtotime($tstamp));
 }
