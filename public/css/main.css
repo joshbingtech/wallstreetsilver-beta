@@ -702,10 +702,11 @@ table.dataTable.stripe tr.odd {
 /* Tweets Table */
 .flow-full-table td {
     padding: 10px;
-    white-space: nowrap;
+    text-align: center;
 }
 .flow-full-table td .news {
     white-space: normal;
+    text-align: left;
     margin: 0 5px;
     padding: 5px;
     border: 1px solid #FFFFFF;
