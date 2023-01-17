@@ -2,10 +2,25 @@
 
 @section('content')
 <div class="container">
-    <div class="row mt-3">
-        <div class="col-md-9">
+    <div class="row">
+        <div class="col-md-3 mt-3">
+            <div class="price-chart-container">
+                <h5 class="text-center"> Gold Silver Ratio </h5>
+                <img class="price-chart" src="https://goldprice.org/charts/history/gold_30_day_silver_x.png">
+            </div>
+            <div class="price-chart-container">
+                <h5 class="text-center"> 1 Day Gold Price per Ounce </h5>
+                <img class="price-chart" src="https://goldprice.org/charts/gold_1d_o_USD_z.png">
+            </div>
+            <div class="price-chart-container">
+                <h5 class="text-center"> 1 Day Silver Price per Ounce </h5>
+                <img class="price-chart" src="https://goldprice.org/charts/silver_1d_o_USD_z.png">
+            </div>
+
+        </div>
+        <div class="col-md-6 mt-3">
             @if ($articles_for_carousel->count() > 0)
-                <div class="featured-story-carousel border-white mt-3">
+                <div class="featured-story-carousel border-white">
                     <div id="featured-story-carousel" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
                             @foreach ($articles_for_carousel as $key => $article)
@@ -47,73 +62,66 @@
                     </div>
                 </div>
             @endif
-
             <div class="container mt-5">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="tweets">
-                            <table class="flow-full-table" style="width: 100%;">
-                                <tbody>
-                                    @foreach ($tweets as $tweet)
-                                    <tr>
-                                        <td>
-                                            {{ convertDateTimeToDateTime($tweet['created_at']) }}
-                                        </td>
-                                        <td>
-                                            <div class="news">
-                                                <a href = "{{ $tweet['author_url'] }}"> {{ "@".$tweet['author'].": " }} </a>
-                                                <a class="news-text" href = "{{ $tweet['tweet_url'] }}"> {{ $tweet['text'] }} </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="featured-articles">
-                            <div class="featured-articles">
-                                @foreach ($featured_articles as $article)
-                                    <div class="row article border-white">
-                                        <div class="col-md-4">
-                                            <div class="outer">
-                                                <div class="middle">
-                                                    <div>
-                                                        <img src="{{ asset('articles/'.$article['thumbnail']) }}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8 article-summary">
-                                            <h3 class="text-center"> {{ $article['title'] }} </h3>
+                <div class="featured-articles">
+                    <div class="featured-articles">
+                        @foreach ($featured_articles as $article)
+                            <div class="row article border-white">
+                                <div class="col-md-4">
+                                    <div class="outer">
+                                        <div class="middle">
                                             <div>
-                                                {{ character_limiter($article['description'], 200) }}
-                                                <a href="#"> Continue Reading </a>
-                                            </div>
-                                            <div class="article-publish-date">
-                                                {{ convertDateTimeToDate($article['created_at']) }}
-                                            </div>
-                                            <div class="article-view">
-                                                <img src="{{ asset('images/icons/view-count.png') }}"> {{ $article['views'] }}
+                                                <img src="{{ asset('articles/'.$article['thumbnail']) }}">
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
+                                <div class="col-md-8 article-summary">
+                                    <h3 class="text-center"> {{ $article['title'] }} </h3>
+                                    <div>
+                                        {{ character_limiter($article['description'], 200) }}
+                                        <a href="#"> Continue Reading </a>
+                                    </div>
+                                    <div class="article-publish-date">
+                                        {{ convertDateTimeToDate($article['created_at']) }}
+                                    </div>
+                                    <div class="article-view">
+                                        <img src="{{ asset('images/icons/view-count.png') }}"> {{ $article['views'] }}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-
+        <div class="col-md-3 mt-3">
+            <div class="embed-youtube">
+                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/3YWA2calTgQ"></iframe>
+            </div>
+            <div class="tweets">
+                <table class="flow-full-table" style="width: 100%;">
+                    <tbody>
+                        @foreach ($tweets as $tweet)
+                        <tr>
+                            <td>
+                                {{ convertDateTimeToDateTime($tweet['created_at']) }}
+                            </td>
+                            <td>
+                                <div class="news">
+                                    <a href = "{{ $tweet['author_url'] }}"> {{ "@".$tweet['author'].": " }} </a>
+                                    <a class="news-text" href = "{{ $tweet['tweet_url'] }}"> {{ $tweet['text'] }} </a>
+                                </div>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
 @endsection
 @push("scripts")
-    <script type="text/javascript">
 
-    </script>
 @endpush

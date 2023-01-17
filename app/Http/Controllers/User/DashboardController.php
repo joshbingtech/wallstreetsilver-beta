@@ -6,16 +6,23 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use Twitter;
+use Alaouy\Youtube\Facades\Youtube;
 
 class DashboardController extends Controller
 {
     public function index()
     {
+
+        $videoList = Youtube::listChannelVideos('UCXWoMTRWJTIZwUblljo5aDQ', 1, 'date');
+        $youtube_latest_video_id = $videoList[0]->id->videoId;
+
         $article = new Article;
+
         $params = [
             'tweet.fields' => 'text,created_at,id',
             'expansions' => 'author_id',
-            'user.fields' => 'username'
+            'user.fields' => 'username',
+            'max_results' => 5
         ];
 
         $tweets = array();
@@ -37,6 +44,7 @@ class DashboardController extends Controller
             'tweets' => $tweets,
             'featured_articles' => $article->getFeaturedArticles(),
             'articles_for_carousel' => $article->getArticlesForCarousel(),
+            'youtube_video_id' => $youtube_latest_video_id,
         ];
         return view('user/dashboard', $data);
     }

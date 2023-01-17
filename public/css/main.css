@@ -291,7 +291,7 @@ a.nav-link {
     background-color: rgba(31, 31, 35, 0.8);
     border-radius: 5px;
     box-shadow: rgb(255 255 255 / 30%) 0px 2px 8px 0px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 .featured-articles .article .article-summary {
     position: relative;
@@ -724,3 +724,36 @@ table.dataTable.stripe tr.odd {
     background-color: rgba(31, 31, 35, 0.8);
 }
 /* Tweets Table */
+
+/* Price Charts */
+.price-chart-container {
+    margin-bottom: 20px;
+}
+.price-chart {
+    width: 100%;
+}
+/* Price Charts */
+
+/* Embed Youtube */
+.embed-youtube {
+    position: relative;
+    padding-bottom: 56.25%; /* - 16:9 aspect ratio (most common) */
+    /* padding-bottom: 62.5%; - 16:10 aspect ratio */
+    /* padding-bottom: 75%; - 4:3 aspect ratio */
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.embed-youtube iframe,
+.embed-youtube object,
+.embed-youtube embed {
+    border: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* Embed Youtube */
