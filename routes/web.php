@@ -43,9 +43,28 @@ Route::prefix('journalist')->middleware('auth')->group(function() {
 
 });
 
+// routes for users
 Route::get('/', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/news', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('news');
+
+// routes for charts
+Route::get('/charts/spot-gold', [App\Http\Controllers\User\ChartController::class, 'spotGold'])->name('charts/spot-gold');
+Route::get('/charts/live-gold-price', [App\Http\Controllers\User\ChartController::class, 'liveGoldPrice'])->name('charts/live-gold-price');
+Route::get('/charts/gold-price-per-ounce', [App\Http\Controllers\User\ChartController::class, 'goldPricePerOunce'])->name('charts/gold-price-per-ounce');
+Route::get('/charts/gold-price-per-gram', [App\Http\Controllers\User\ChartController::class, 'goldPricePerGram'])->name('charts/gold-price-per-gram');
+Route::get('/charts/gold-price-per-kilo', [App\Http\Controllers\User\ChartController::class, 'goldPricePerKilo'])->name('charts/gold-price-per-kilo');
+Route::get('/charts/gold-price-history', [App\Http\Controllers\User\ChartController::class, 'goldPriceHistory'])->name('charts/gold-price-history');
+Route::get('/charts/gold-silver-ratio', [App\Http\Controllers\User\ChartController::class, 'goldSilverRatio'])->name('charts/gold-silver-ratio');
+
+Route::get('/charts/spot-silver', [App\Http\Controllers\User\ChartController::class, 'spotSilver'])->name('charts/spot-silver');
+Route::get('/charts/live-silver-price', [App\Http\Controllers\User\ChartController::class, 'liveSilverPrice'])->name('charts/live-silver-price');
+Route::get('/charts/silver-price-per-ounce', [App\Http\Controllers\User\ChartController::class, 'silverPricePerOunce'])->name('charts/silver-price-per-ounce');
+Route::get('/charts/silver-price-per-gram', [App\Http\Controllers\User\ChartController::class, 'silverPricePerGram'])->name('charts/silver-price-per-gram');
+Route::get('/charts/silver-price-per-kilo', [App\Http\Controllers\User\ChartController::class, 'silverPricePerKilo'])->name('charts/silver-price-per-kilo');
+Route::get('/charts/silver-price-history', [App\Http\Controllers\User\ChartController::class, 'silverPriceHistory'])->name('charts/silver-price-history');
+Route::get('/charts/silver-gold-ratio', [App\Http\Controllers\User\ChartController::class, 'silverGoldRatio'])->name('charts/silver-gold-ratio');
+
 Route::get('/invitation/{token}', [App\Http\Controllers\Auth\InviteController::class, 'inviteView'])->name('invitation');
 Route::post('/accept-invitation', [App\Http\Controllers\Auth\InviteController::class, 'acceptInvitation'])->name('accept-invitation');
 

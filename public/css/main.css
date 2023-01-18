@@ -12,6 +12,21 @@ body {
 #logo {
     height: 80px;
 }
+.nav-item-empty {
+    width: 50px;
+}
+#navbar .social-link {
+    display: inline-block;
+}
+#navbar .social-link img{
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+}
+.nav-link {
+    padding-left: 12px!important;
+    padding-right: 12px!important;
+}
 a.nav-link {
     color: rgba(255, 255, 255, 0.7);
     font-size: 20px;
@@ -27,6 +42,35 @@ a.nav-link {
 @media (min-width: 1800px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
         max-width: 1680px;
+    }
+}
+.dropdown-menu {
+    font-size: 13px;
+    padding: 1em;
+    color: #FFFFFF;
+    border-radius: 5px;
+    background: #1f1f23;
+    border-color: #1f1f23;
+}
+.dropdown-item {
+    color: rgba(255, 255, 255, 0.7);
+}
+.dropdown-item:hover, .dropdown-item:active, .dropdown-item:focus {
+    color: #FFFFFF;
+    background: #1f1f23;
+}
+.dropdown-menu .h3 {
+    font-size: 1.25em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    display: flex;
+}
+.charts-dropdown {
+    width: 420px;
+}
+@media (max-width: 767px) {
+    .charts-dropdown {
+        width: auto;
     }
 }
 /* Nav Bar */
@@ -386,21 +430,6 @@ a.nav-link {
 }
 /* Content */
 
-/* Menu */
-.nav-link {
-    padding-left: 12px!important;
-    padding-right: 12px!important;
-}
-.nav-item-empty {
-    width: 50px;
-}
-.social-link img{
-    width: 50px;
-    height: 50px;
-    padding: 2px;
-}
-/* Menu */
-
 /* Modals */
 .modal-content {
     background-color: #1e1e24;
@@ -730,9 +759,12 @@ table.dataTable.stripe tr.odd {
 .price-chart-container {
     margin-bottom: 20px;
 }
-.price-chart {
-    width: 100%;
+.mini-chart {
+    height: 250px!important;
 }
+/*img.price-chart {
+    width: 100%;
+}*/
 /* Price Charts */
 
 /* Embed Youtube */

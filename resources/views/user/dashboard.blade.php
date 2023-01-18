@@ -3,20 +3,96 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+            {
+            "symbols": [
+                {
+                "description": "Gold",
+                "proName": "COMEX_MINI:QO1!"
+                },
+            ],
+            "showSymbolLogo": true,
+            "colorTheme": "light",
+            "isTransparent": true,
+            "displayMode": "regular",
+            "locale": "en"
+            }
+        </script>
+        </div>
+        <!-- TradingView Widget END -->
+    </div>
+    <div class="row">
         <div class="col-md-3 mt-3">
             <div class="price-chart-container">
+                {{-- <img class="price-chart" src="https://goldprice.org/charts/history/gold_30_day_silver_x.png"> --}}
+                <div class="tradingview-widget-container mini-chart">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                            "symbol": "TVC:GOLDSILVER",
+                            "width": "100%",
+                            "height": "100%",
+                            "locale": "en",
+                            "dateRange": "1D",
+                            "colorTheme": "dark",
+                            "trendLineColor": "rgb(106, 168, 79)",
+                            "isTransparent": true,
+                            "autosize": true,
+                            "largeChartUrl": "https://tradingview.com",
+                            "chartOnly": false
+                        }
+                    </script>
+                </div>
                 <h5 class="text-center"> Gold Silver Ratio </h5>
-                <img class="price-chart" src="https://goldprice.org/charts/history/gold_30_day_silver_x.png">
             </div>
             <div class="price-chart-container">
+                {{-- <img class="price-chart" src="https://goldprice.org/charts/gold_1d_o_USD_z.png"> --}}
+                <div class="tradingview-widget-container mini-chart">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                            "symbol": "TVC:GOLD",
+                            "width": "100%",
+                            "height": "100%",
+                            "locale": "en",
+                            "dateRange": "1D",
+                            "colorTheme": "dark",
+                            "trendLineColor": "#F95360",
+                            "isTransparent": true,
+                            "autosize": true,
+                            "largeChartUrl": "https://tradingview.com",
+                            "chartOnly": false
+                        }
+                    </script>
+                </div>
                 <h5 class="text-center"> 1 Day Gold Price per Ounce </h5>
-                <img class="price-chart" src="https://goldprice.org/charts/gold_1d_o_USD_z.png">
             </div>
             <div class="price-chart-container">
+                {{-- <img class="price-chart" src="https://goldprice.org/charts/silver_1d_o_USD_z.png"> --}}
+                <div class="tradingview-widget-container mini-chart">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                            "symbol": "TVC:SILVER",
+                            "width": "100%",
+                            "height": "100%",
+                            "locale": "en",
+                            "dateRange": "1D",
+                            "colorTheme": "dark",
+                            "trendLineColor": "#10a9fb",
+                            "isTransparent": true,
+                            "autosize": true,
+                            "largeChartUrl": "https://tradingview.com",
+                            "chartOnly": false
+                        }
+                    </script>
+                </div>
                 <h5 class="text-center"> 1 Day Silver Price per Ounce </h5>
-                <img class="price-chart" src="https://goldprice.org/charts/silver_1d_o_USD_z.png">
             </div>
-
         </div>
         <div class="col-md-6 mt-3">
             @if ($articles_for_carousel->count() > 0)

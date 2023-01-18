@@ -29,7 +29,7 @@ class DashboardController extends Controller
         $json = Twitter::userTweets('1366565625401909249', $params);
         $array = json_decode($json, true);
         $author = $array['includes']['users'][0]['username'];
-        $tweets_array = $array['data'];
+        $tweets_array = array_slice($array['data'], 0, 3);
         foreach ($tweets_array as $value) {
             array_push($tweets, array(
                 'text' => $value['text'],
