@@ -173,7 +173,7 @@
                         processData: false,
                         success: function (response) {
                             if($.isEmptyObject(response.error)) {
-                                location.reload();
+                                window.location.href = "{{ route('admin/articles') }}";
                             } else {
                                 var errors = response.error;
                                 $.each(errors, function(key, error) {

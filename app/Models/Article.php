@@ -40,4 +40,9 @@ class Article extends Model
     {
         return $this->orderBy('views', 'desc')->limit(3)->get();
     }
+
+    public function getArticles()
+    {
+        return $this->orderBy('created_at', 'desc')->paginate(5);
+    }
 }

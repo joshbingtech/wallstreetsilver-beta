@@ -330,12 +330,16 @@ a.nav-link {
 .banner {
     width: 100%;
 }
+.featured-articles .article-link {
+    text-decoration: none;
+    color: #FFFFFF;
+}
 .featured-articles .article {
-    padding: 20px 10px;
+    padding: 10px;
     background-color: rgba(31, 31, 35, 0.8);
     border-radius: 5px;
     box-shadow: rgb(255 255 255 / 30%) 0px 2px 8px 0px;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .featured-articles .article .article-summary {
     position: relative;
@@ -355,6 +359,31 @@ a.nav-link {
 }
 .article-view img {
     width: 30px;
+}
+.pagination {
+    float: right;
+}
+.pagination .page-item {
+    width: 38px;
+}
+.pagination .page-item .page-link {
+    width: 100%;
+    text-align: center;
+    background-color: #3b3c44;
+    color: #10a9fb;
+    border: 1px solid #10a9fb;
+}
+.pagination .page-item.disabled .page-link {
+    background-color: #686868;
+    color: #34b2f5;
+}
+.pagination .page-item.active .page-link {
+    background-color: #10a9fb;
+    color: #3b3c44;
+}
+.pagination .page-item .page-link:hover {
+    background-color: #34b2f5;
+    color: #686868;
 }
 .content-wrapper {
     min-height: calc( 100vh - 400px - 8rem );
@@ -761,6 +790,13 @@ table.dataTable.stripe tr.odd {
 }
 .mini-chart {
     height: 250px!important;
+}
+.tv-ticker-item-tape__short-name {
+    font-size: 25px!important;
+    color: #FFFFFF;
+}
+.js-copyright-label {
+    display: none!important;
 }
 /*img.price-chart {
     width: 100%;

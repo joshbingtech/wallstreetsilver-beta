@@ -42,7 +42,7 @@ class DashboardController extends Controller
 
         $data = [
             'tweets' => $tweets,
-            'featured_articles' => $article->getFeaturedArticles(),
+            'articles' => $article->getArticles(),
             'articles_for_carousel' => $article->getArticlesForCarousel(),
             'youtube_video_id' => $youtube_latest_video_id,
         ];

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,5 +42,7 @@ class AppServiceProvider extends ServiceProvider
         View::share('supporters', $supporters);
         View::share('contacts', $contacts);
         View::share('current_nav_tab', $current_nav_tab);
+
+        Paginator::useBootstrap();
     }
 }
