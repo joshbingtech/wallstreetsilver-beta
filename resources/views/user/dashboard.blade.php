@@ -158,7 +158,7 @@
                     @foreach ($articles as $article)
                         <a href="#" class="article-link">
                             <div class="row article border-white">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="outer">
                                         <div class="middle">
                                             <div>
@@ -167,7 +167,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-8 article-summary">
+                                <div class="col-md-9 article-summary">
                                     <h4 class="text-center"> {{ $article['title'] }} </h4>
                                     <div>
                                         {{ character_limiter($article['description'], 200) }}
