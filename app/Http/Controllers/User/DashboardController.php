@@ -49,4 +49,12 @@ class DashboardController extends Controller
         ];
         return view('user/dashboard', $data);
     }
+
+    public function display_article($article_id) {
+        $article = new Article;
+        $data = [
+            'article' => $article->getArticle($article_id),
+        ];
+        return view('user/article', $data);
+    }
 }

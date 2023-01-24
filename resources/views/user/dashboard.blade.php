@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row">
@@ -44,7 +43,6 @@
     <div class="row">
         <div class="col-md-3 mt-3">
             <div class="price-chart-container">
-                {{-- <img class="price-chart" src="https://goldprice.org/charts/silver_1d_o_USD_z.png"> --}}
                 <div class="tradingview-widget-container mini-chart">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
@@ -66,7 +64,6 @@
                 <h6 class="text-center"> 1 Day Silver Price per Ounce </h6>
             </div>
             <div class="price-chart-container">
-                {{-- <img class="price-chart" src="https://goldprice.org/charts/gold_1d_o_USD_z.png"> --}}
                 <div class="tradingview-widget-container mini-chart">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
@@ -181,15 +178,13 @@
                                 </div>
                             </div>
                         </a>
-
                     @endforeach
                     {{ $articles->links() }}
                 </div>
             </div>
         </div>
         <div class="col-md-3 mt-3">
-        <div class="price-chart-container">
-                {{-- <img class="price-chart" src="https://goldprice.org/charts/history/gold_30_day_silver_x.png"> --}}
+            <div class="price-chart-container">
                 <div class="tradingview-widget-container mini-chart">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
@@ -236,8 +231,3 @@
     </div>
 </div>
 @endsection
-@push("scripts")
-    <script>
-
-    </script>
-@endpush

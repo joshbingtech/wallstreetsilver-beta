@@ -31,6 +31,11 @@ class Article extends Model
             ->count();
     }
 
+    public function getArticle($article_id)
+    {
+        return $this->find($article_id);
+    }
+
     public function getFeaturedArticles()
     {
         return $this->orderBy('views', 'desc')->limit(5)->get();
