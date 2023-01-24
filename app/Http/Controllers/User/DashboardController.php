@@ -19,6 +19,7 @@ class DashboardController extends Controller
         $article = new Article;
 
         $params = [
+            'exclude' => 'retweets,replies',
             'tweet.fields' => 'text,created_at,id',
             'expansions' => 'author_id',
             'user.fields' => 'username',

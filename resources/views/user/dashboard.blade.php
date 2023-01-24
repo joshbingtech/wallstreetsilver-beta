@@ -88,18 +88,17 @@
                 <h6 class="text-center"> 1 Day Gold Price per Ounce </h6>
             </div>
             <div class="price-chart-container">
-                {{-- <img class="price-chart" src="https://goldprice.org/charts/history/gold_30_day_silver_x.png"> --}}
                 <div class="tradingview-widget-container mini-chart">
                     <div class="tradingview-widget-container__widget"></div>
                     <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
                         {
-                            "symbol": "TVC:GOLDSILVER",
+                            "symbol": "TVC:USOIL",
                             "width": "100%",
                             "height": "100%",
                             "locale": "en",
                             "dateRange": "1D",
                             "colorTheme": "dark",
-                            "trendLineColor": "rgb(106, 168, 79)",
+                            "trendLineColor": "#33BF8C",
                             "isTransparent": true,
                             "autosize": true,
                             "largeChartUrl": "https://tradingview.com",
@@ -107,7 +106,7 @@
                         }
                     </script>
                 </div>
-                <h6 class="text-center"> Gold Silver Ratio </h6>
+                <h6 class="text-center"> 1 Day CRUDE OIL </h6>
             </div>
         </div>
         <div class="col-md-6 mt-3">
@@ -189,8 +188,30 @@
             </div>
         </div>
         <div class="col-md-3 mt-3">
+        <div class="price-chart-container">
+                {{-- <img class="price-chart" src="https://goldprice.org/charts/history/gold_30_day_silver_x.png"> --}}
+                <div class="tradingview-widget-container mini-chart">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                        {
+                            "symbol": "TVC:GOLDSILVER",
+                            "width": "100%",
+                            "height": "100%",
+                            "locale": "en",
+                            "dateRange": "1D",
+                            "colorTheme": "dark",
+                            "trendLineColor": "rgb(106, 168, 79)",
+                            "isTransparent": true,
+                            "autosize": true,
+                            "largeChartUrl": "https://tradingview.com",
+                            "chartOnly": false
+                        }
+                    </script>
+                </div>
+                <h6 class="text-center"> Gold Silver Ratio </h6>
+            </div>
             <div class="embed-youtube">
-                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/3YWA2calTgQ"></iframe>
+                <iframe width="100%" height="auto" src="{{ 'https://www.youtube.com/embed/'.$youtube_video_id }}"></iframe>
             </div>
             <div class="tweets">
                 <table class="flow-full-table" style="width: 100%;">

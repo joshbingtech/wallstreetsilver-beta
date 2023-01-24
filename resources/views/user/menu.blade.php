@@ -1,11 +1,9 @@
 <ul class="navbar-nav me-auto">
     <li class="nav-item nav-item-empty"></li>
     <div>
-        <a class="social-link" href="https://twitter.com" target="_blank"><img src="{{ asset('images/icons/twitter-logo.png') }}"></a>
-        <a class="social-link" href="https://youtube.com" target="_blank"><img src="{{ asset('images/icons/youtube-logo.png') }}"></a>
-        <a class="social-link" href="https://reddit.com" target="_blank"><img src="{{ asset('images/icons/reddit-logo.png') }}"></a>
-        <a class="social-link" href="https://discord.com" target="_blank"><img src="{{ asset('images/icons/discord-logo.png') }}"></a>
-        <a class="social-link" href="https://instagram.com" target="_blank"><img src="{{ asset('images/icons/instagram-logo.png') }}"></a>
+        @foreach ($social_links as $key => $social_link)
+            <a class="social-link" href="{{ $social_link }}" target="_blank"><img src="{{ asset('images/icons/'.$key.'-logo.png') }}"></a>
+        @endforeach
     </div>
 </ul>
 <ul class="navbar-nav ms-auto">

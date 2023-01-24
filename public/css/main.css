@@ -798,9 +798,9 @@ table.dataTable.stripe tr.odd {
 .js-copyright-label {
     display: none!important;
 }
-/*img.price-chart {
-    width: 100%;
-}*/
+.tradingview-widget-container-fixed {
+    margin: auto;
+}
 /* Price Charts */
 
 /* Embed Youtube */
