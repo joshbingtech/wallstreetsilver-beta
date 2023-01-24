@@ -110,7 +110,7 @@ a.nav-link {
     position: absolute;
     width: 10px;
     height: 10px;
-    color: #f16857;
+    color: #808080;
     content: '';
 }
 .content-loader-corner-top:before {
@@ -143,7 +143,7 @@ a.nav-link {
     top: 50%;
     width: 30px;
     height: 30px;
-    background: #f16857;
+    background: #808080;
 }
 /* Content Loader */
 
