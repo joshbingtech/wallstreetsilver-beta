@@ -47,7 +47,7 @@ Route::prefix('journalist')->middleware('auth')->group(function() {
 Route::get('/', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
 Route::get('/news', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('news');
-Route::get('/news/{article_id}', [App\Http\Controllers\User\DashboardController::class, 'display_article'])->name('display_article');
+Route::get('/news/{article_id}', [App\Http\Controllers\User\DashboardController::class, 'displayArticle'])->name('display-article');
 
 // routes for charts
 Route::get('/charts/spot-gold', [App\Http\Controllers\User\ChartController::class, 'spotGold'])->name('charts/spot-gold');
