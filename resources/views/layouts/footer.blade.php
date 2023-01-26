@@ -1,19 +1,11 @@
 <div class="footer py-4">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 my-2">
+            <div class="col-md-1 my-2">
                 <div class="outer">
                     <div class="middle">
                         <div>
-                            <h4 class="font-weight-light"> Contact </h4>
-                            <table class="table-contact">
-                                @foreach ($contacts as $contact)
-                                    <tr>
-                                        <td><img class="avatar" src="{{ asset($contact['thumbnail']) }}" /></td>
-                                        <td><a href="{{ $contact['contact_link'] }}" class="contact-link" target="_blank"> {{ $contact['name'] }} </a></td>
-                                    </tr>
-                                @endforeach
-                            </table>
+                            <a class="auth-link font-big" href="#" data-bs-toggle="modal" data-bs-target="#contactUsModal"> Contact Us </a>
                         </div>
                     </div>
                 </div>
@@ -28,7 +20,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 my-2">
+            <div class="col-md-8 my-2">
             <div class="jcarousel" style="width:100%;">
                 <ul>
                     @foreach ($supporters as $supporter)
@@ -36,6 +28,26 @@
                     @endforeach
                 </ul>
             </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="contactUsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-bs-dismiss="modal" style="float: right;">&times;</button>
+                <h4 class="text-center"> Contact Us </h4>
+                @foreach ($contacts as $contact)
+                    <div class="contact-list text-center">
+                        <a class="auth-link font-big" href="{{ $contact['contact_link'] }}" target="_blank">
+                            {{ $contact['name'] }}
+                        </a>
+                    </div>
+                @endforeach
+                <div class="modal-button-group">
+                    
+                </div>
             </div>
         </div>
     </div>

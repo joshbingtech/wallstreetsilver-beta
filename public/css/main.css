@@ -738,14 +738,17 @@ table.dataTable.stripe tr.odd {
     height: 50px;
     line-height: 1.5;
 }
-.auth-form .auth-link {
+a.auth-link {
     font-size: 1rem;
     color: #10a9fb;
     text-decoration: none!important;
     transition: color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.auth-form .auth-link:hover {
+a.auth-link:hover {
     color: #87d3f5;
+}
+.font-big {
+    font-size: 1.5rem!important;
 }
 /* Login/Register Pages */
 
