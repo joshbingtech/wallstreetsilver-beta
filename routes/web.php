@@ -44,10 +44,10 @@ Route::prefix('journalist')->middleware('auth')->group(function() {
 });
 
 // routes for users
-Route::get('/', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
-Route::get('/dashboard', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('dashboard');
-Route::get('/news', [App\Http\Controllers\User\DashboardController::class, 'index'])->name('news');
-Route::get('/news/{article_id}', [App\Http\Controllers\User\DashboardController::class, 'displayArticle'])->name('display-article');
+Route::get('/', [App\Http\Controllers\User\HomeController::class, 'index'])->name('landing');
+Route::get('/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('home');
+Route::get('/news', [App\Http\Controllers\User\NewsController::class, 'index'])->name('news');
+Route::get('/news/{article_id}', [App\Http\Controllers\User\NewsController::class, 'displayArticle'])->name('display-article');
 
 // routes for charts
 Route::get('/charts/spot-gold', [App\Http\Controllers\User\ChartController::class, 'spotGold'])->name('charts/spot-gold');
@@ -68,7 +68,3 @@ Route::get('/charts/silver-gold-ratio', [App\Http\Controllers\User\ChartControll
 
 Route::get('/invitation/{token}', [App\Http\Controllers\Auth\InviteController::class, 'inviteView'])->name('invitation');
 Route::post('/accept-invitation', [App\Http\Controllers\Auth\InviteController::class, 'acceptInvitation'])->name('accept-invitation');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

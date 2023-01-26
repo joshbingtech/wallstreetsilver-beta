@@ -44,15 +44,15 @@
                             {
                                 "width": "100%",
                                 "height": 610,
-                                "symbol": "TVC:SILVER/TVC:GOLD",
-                                "interval": "D",
+                                "symbol": "1/TVC:GOLDSILVER",
                                 "timezone": "America/New_York",
                                 "theme": "dark",
-                                "style": "1",
+                                "style": "2",
                                 "locale": "en",
                                 "toolbar_bg": "#f1f3f6",
                                 "enable_publishing": false,
                                 "withdateranges": true,
+                                "range": "1D",
                                 "hide_side_toolbar": false,
                                 "save_image": false,
                                 "container_id": "tradingview_918f1"

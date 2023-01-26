@@ -19,8 +19,8 @@ body {
     display: inline-block;
 }
 #navbar .social-link img{
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     padding: 2px;
 }
 .nav-link {
@@ -758,16 +758,29 @@ table.dataTable.stripe tr.odd {
 
 /* Tweets Table */
 .flow-full-table td {
-    padding: 10px;
     text-align: center;
+}
+.flow-full-table td:nth-child(1) {
+    padding: 5px 0px 5px 5px;
+    width: 50px;
+}
+.flow-full-table td:nth-child(2) {
+    padding: 5px;
 }
 .flow-full-table td .news {
     white-space: normal;
     text-align: left;
-    margin: 0 5px;
     padding: 5px;
     border: 1px solid #FFFFFF;
     border-radius: 5px;
+}
+.flow-full-table td .news .twitter-media {
+    width: 100%;
+    border-radius: 10px;
+}
+.flow-full-table td .news .created_at {
+    float: right;
+    padding-top: 7px;
 }
 .flow-full-table td a {
     text-decoration: none;

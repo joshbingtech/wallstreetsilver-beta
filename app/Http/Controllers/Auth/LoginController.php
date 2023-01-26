@@ -22,19 +22,12 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    //protected $redirectTo = RouteServiceProvider::HOME;
-
     protected function authenticated()
     {
         if(Auth::user()->role == '0') {
             return redirect('admin/dashboard')->with('status', 'Welcome to admin portal');
         } else {
-            return redirect('/dashboard')->with('status', 'logged in successfully');
+            return redirect('/home')->with('status', 'logged in successfully');
         }
     }
 

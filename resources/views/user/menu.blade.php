@@ -8,6 +8,9 @@
 </ul>
 <ul class="navbar-nav ms-auto">
     <li class="nav-item">
+        <a href="{{ route('home') }}" class="nav-link @if ($current_nav_tab == "home") nav-link-active @endif"> Home </a>
+    </li>
+    <li class="nav-item">
         <a href="{{ route('news') }}" class="nav-link @if ($current_nav_tab == "news") nav-link-active @endif"> News </a>
     </li>
     <li class="nav-item dropdown">

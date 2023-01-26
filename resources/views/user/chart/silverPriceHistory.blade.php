@@ -45,7 +45,6 @@
                                 "width": "100%",
                                 "height": 610,
                                 "symbol": "TVC:SILVER",
-                                "interval": "W",
                                 "timezone": "America/New_York",
                                 "theme": "dark",
                                 "style": "1",
@@ -53,6 +52,7 @@
                                 "toolbar_bg": "#f1f3f6",
                                 "enable_publishing": false,
                                 "withdateranges": true,
+                                "range": "60M",
                                 "hide_side_toolbar": false,
                                 "save_image": false,
                                 "container_id": "tradingview_918f1"

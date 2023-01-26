@@ -9,71 +9,113 @@ class ChartController extends Controller
 {
     public function spotGold()
     {
-        return view('user/chart/spotGold');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/spotGold', $data);
     }
 
     public function liveGoldPrice()
     {
-        return view('user/chart/liveGoldPrice');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/liveGoldPrice', $data);
     }
 
     public function goldPricePerOunce()
     {
-        return view('user/chart/goldPricePerOunce');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/goldPricePerOunce', $data);
     }
 
     public function goldPricePerGram()
     {
-        return view('user/chart/goldPricePerGram');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/goldPricePerGram', $data);
     }
 
     public function goldPricePerKilo()
     {
-        return view('user/chart/goldPricePerKilo');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/goldPricePerKilo', $data);
     }
 
     public function goldPriceHistory()
     {
-        return view('user/chart/goldPriceHistory');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/goldPriceHistory', $data);
     }
 
     public function goldSilverRatio()
     {
-        return view('user/chart/goldSilverRatio');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/goldSilverRatio', $data);
     }
 
     public function spotSilver()
     {
-        return view('user/chart/spotSilver');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/spotSilver', $data);
     }
 
     public function liveSilverPrice()
     {
-        return view('user/chart/liveSilverPrice');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/liveSilverPrice', $data);
     }
 
     public function silverPricePerOunce()
     {
-        return view('user/chart/silverPricePerOunce');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/silverPricePerOunce', $data);
     }
 
     public function silverPricePerGram()
     {
-        return view('user/chart/silverPricePerGram');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/silverPricePerGram', $data);
     }
 
     public function silverPricePerKilo()
     {
-        return view('user/chart/silverPricePerKilo');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/silverPricePerKilo', $data);
     }
 
     public function silverPriceHistory()
     {
-        return view('user/chart/silverPriceHistory');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/silverPriceHistory', $data);
     }
 
     public function silverGoldRatio()
     {
-        return view('user/chart/silverGoldRatio');
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/silverGoldRatio', $data);
     }
 }

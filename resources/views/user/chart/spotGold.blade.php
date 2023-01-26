@@ -45,15 +45,15 @@
                                 "width": "100%",
                                 "height": 610,
                                 "symbol": "FXOPEN:XAUUSD",
-                                "interval": "1D",
                                 "timezone": "America/New_York",
                                 "theme": "dark",
                                 "style": "2",
                                 "locale": "en",
                                 "toolbar_bg": "#f1f3f6",
                                 "enable_publishing": false,
-                                "hide_top_toolbar": true,
-                                "hide_legend": true,
+                                "withdateranges": true,
+                                "range": "1D",
+                                "hide_side_toolbar": false,
                                 "save_image": false,
                                 "container_id": "tradingview_918f1"
                             }
