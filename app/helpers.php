@@ -36,12 +36,12 @@ function convertDateTimeToDateTime($tstamp)
 {
     $date = new DateTime($tstamp, new DateTimeZone('UTC'));
     $date->setTimezone(new DateTimeZone('America/New_York'));
-    return $date->format('m/d g:i:s');
+    return $date->format('m/d g:iA');
 }
 
 function convertDateTimeToTime($tstamp)
 {
     $date = new DateTime($tstamp, new DateTimeZone('UTC'));
     $date->setTimezone(new DateTimeZone('America/New_York'));
-    return $date->format('g:i:s');
+    return $date->format('g:iA');
 }
