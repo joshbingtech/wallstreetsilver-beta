@@ -34,7 +34,7 @@
                         <button type="submit" class="btn btn-block btn-gradient-primary btn-lg auth-form-btn"> JOIN </button>
                     </div>
                     <div class="text-center mt-4">
-                        Already have an account? <a href="{{ route('login') }}" class="auth-link"> Sign In </a>
+                        Already have an account? <a href="{{ route('login') }}" class="button-secondary"> Sign In </a>
                     </div>
                 </form>
             </div>

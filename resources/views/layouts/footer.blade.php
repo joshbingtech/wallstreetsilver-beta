@@ -5,7 +5,14 @@
                 <div class="outer">
                     <div class="middle">
                         <div>
-                            <a class="auth-link font-big" href="#" data-bs-toggle="modal" data-bs-target="#contactUsModal"> Contact Us </a>
+                            <a class="button-secondary font-big" data-bs-toggle="tooltip" title="<h4 class='text-center'> Contact Us </h4>
+                                @foreach ($contacts as $contact)
+                                    <div class='contact-list text-center'>
+                                        <a class='button-secondary font-big' href='{{ $contact['contact_link'] }}' target='_blank'>
+                                            {{ $contact['name'] }}
+                                        </a>
+                                    </div>
+                                @endforeach" data-bs-html="true"> Contact Us </a>
                         </div>
                     </div>
                 </div>
@@ -28,26 +35,6 @@
                     @endforeach
                 </ul>
             </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="contactUsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-bs-dismiss="modal" style="float: right;">&times;</button>
-                <h4 class="text-center"> Contact Us </h4>
-                @foreach ($contacts as $contact)
-                    <div class="contact-list text-center">
-                        <a class="auth-link font-big" href="{{ $contact['contact_link'] }}" target="_blank">
-                            {{ $contact['name'] }}
-                        </a>
-                    </div>
-                @endforeach
-                <div class="modal-button-group">
-                    
-                </div>
             </div>
         </div>
     </div>

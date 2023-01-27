@@ -48,6 +48,7 @@ Route::get('/', [App\Http\Controllers\User\HomeController::class, 'index'])->nam
 Route::get('/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('home');
 Route::get('/news', [App\Http\Controllers\User\NewsController::class, 'index'])->name('news');
 Route::get('/news/{article_id}', [App\Http\Controllers\User\NewsController::class, 'displayArticle'])->name('display-article');
+Route::post('/comment', [App\Http\Controllers\User\CommentController::class, 'create'])->middleware('auth')->name('comment');
 
 // routes for charts
 Route::get('/charts/spot-gold', [App\Http\Controllers\User\ChartController::class, 'spotGold'])->name('charts/spot-gold');

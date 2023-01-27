@@ -210,7 +210,7 @@
             <div class="container mt-5">
                 <div class="featured-articles">
                     @foreach ($articles as $article)
-                        <a href="{{ route('display-article', $article['id']) }}" class="article-link">
+                        <a href="{{ route('display-article', base64_encode($article['id'])) }}" class="article-link">
                             <div class="row article border-white">
                                 <div class="col-md-3">
                                     <div class="outer">

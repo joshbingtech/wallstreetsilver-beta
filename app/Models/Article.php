@@ -11,6 +11,8 @@ class Article extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'title',
         'description',
@@ -18,6 +20,11 @@ class Article extends Model
         'user_id',
         'views',
     ];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class)->whereNull('parent_id');
+    }
 
     public function countAllArticles()
     {

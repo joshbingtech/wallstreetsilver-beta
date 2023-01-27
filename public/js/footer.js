@@ -26,4 +26,11 @@ $( document ).ready(function() {
         target: '+=1',
         autostart: true
     });
+    $('[data-bs-toggle="tooltip"]').tooltip({
+        animated: 'fade',
+        trigger: 'click'
+    });
+    $(':not([data-bs-toggle="tooltip"])').click(function() {
+        $('[data-bs-toggle="tooltip"]').tooltip('hide');
+    });
 });

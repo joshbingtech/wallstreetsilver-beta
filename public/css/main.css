@@ -274,6 +274,26 @@ a.nav-link {
 .icon-action:hover {
     color: #F95360;
 }
+.button-secondary {
+    font-size: 1rem;
+    color: #10a9fb;
+    text-decoration: none!important;
+    transition: color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+}
+.button-secondary:hover {
+    color: #87d3f5;
+}
+.button-tertiary {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none!important;
+    transition: color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+}
+.button-tertiary:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
 /* Buttons */
 
 /* Content */
@@ -738,15 +758,6 @@ table.dataTable.stripe tr.odd {
     height: 50px;
     line-height: 1.5;
 }
-a.auth-link {
-    font-size: 1rem;
-    color: #10a9fb;
-    text-decoration: none!important;
-    transition: color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-a.auth-link:hover {
-    color: #87d3f5;
-}
 .font-big {
     font-size: 1.5rem!important;
 }
@@ -841,3 +852,66 @@ a.auth-link:hover {
     height: 100%;
 }
 /* Embed Youtube */
+
+/* Tooltip */
+.tooltip-inner {
+    padding: 20px 35px;
+    background-color: #141414;
+    border-radius: 7px;
+    max-width: 400px;
+}
+.tooltip-arrow::before {
+    border-top-color: #141414!important;
+}
+/* Tooltip */
+
+/* Comments */
+.comments-count {
+    font-size: 1rem;
+    font-weight: normal;
+    margin-left: 10px;
+}
+.comment-item {
+    display: flex;
+}
+.comment-item .form-group {
+    margin-bottom: 1rem;
+}
+.user-avatar-alternative {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 100%;
+}
+.comment-wrapper {
+    width: 100%;
+    margin-left: 10px;
+}
+.comment-timestamp {
+    font-size: 0.75rem;
+}
+.comment {
+    margin-bottom: 0px;
+}
+.comment-react {
+    margin-bottom: 10px;
+}
+.comment-react .show-reply-form {
+    margin-right: 20px;
+}
+.comment-react .comment-react-like {
+    margin-right: 10px;
+}
+.comment {
+    border-radius: 5px!important;
+}
+.btn-comment-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: normal;
+}
+.expand-comment {
+    cursor: pointer;
+}
+/* Comments */

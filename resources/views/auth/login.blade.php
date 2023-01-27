@@ -37,11 +37,11 @@
                             <i class="input-helper"></i></label>
                         </div>
                         @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="auth-link"> Forgot password? </a>
+                            <a href="{{ route('password.request') }}" class="button-secondary"> Forgot password? </a>
                         @endif
                     </div>
                     <div class="text-center mt-4">
-                        Don't have an account? <a href="{{ route('register') }}" class="auth-link"> Sign Up </a>
+                        Don't have an account? <a href="{{ route('register') }}" class="button-secondary"> Sign Up </a>
                     </div>
                 </form>
             </div>
