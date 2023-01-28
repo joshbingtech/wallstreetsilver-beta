@@ -10,13 +10,7 @@
             <div id="article-content-preview" class="mt-3 ck-content"> {!! $article->description !!} </div>
             <h4>
                 Conversation
-                @if(count($article->comments) == 0)
-                    <span class="comments-count" data-comments_count="{{ count($article->comments) }}"> No Comments Yet </span>
-                @elseif(count($article->comments) == 1)
-                    <span class="comments-count" data-comments_count="{{ count($article->comments) }}"> 1 Comment </span>
-                @else
-                    <span class="comments-count" data-comments_count="{{ count($article->comments) }}">{{ count($article->comments) }} Comments</span>
-                @endif
+                <span class="comments-count"> No Comments Yet </span>
             </h4>
             @if(count($article->comments) > 0)
                 <hr />
@@ -27,7 +21,7 @@
                 </div>
             </div>
             <hr />
-            <form class="comment-form" method="post" action="{{ route('comment') }}">
+            <form class="comment-form comment-to-article" method="post" action="{{ route('comment') }}">
                 @csrf
                 <div class="form-group">
                     <textarea class="form-control comment" name="comment" placeholder="@if(count($article->comments) == 0) Be the first to comment... @else What do you think?  @endif"></textarea>
@@ -51,7 +45,17 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        function getTotalNumberOfComments() {
+            var comment_count = $('.comment-item').length;
+            if(comment_count == 1) {
+                $(".comments-count").text("1 comment");
+            } else if(comment_count > 1) {
+                $(".comments-count").text(comment_count + " comments");
+            }
+        }
         $(document).ready(() => {
+            getTotalNumberOfComments();
+
             $(document).on("click", ".show-reply-form", function() {
                 $(this).parent().next("form").fadeIn();
             });
@@ -61,15 +65,43 @@
                 $(this).prev().text(comment);
                 $(this).remove();
             });
-            $(document).on("click", ".expand-comment-list", function() {
+            
+            $(document).on("click", ".expand-entire-comment-list", function() {
                 $(this).next(".comment-list").fadeIn();
                 $(this).remove();
+            });
+
+            $(document).on("click", ".expand-comment-list", function() {
+                var hidden_comments = $(this).siblings(".comment-item:hidden");
+                
+                if(hidden_comments.length > 3) {
+                    hidden_comments = hidden_comments.slice(0, 3);
+                    var count_rest_comments = parseInt($($(this).find(".count-rest-comments")[0]).text()) - 3;
+                    if(count_rest_comments > 1) {
+                        $($(this).find(".count-rest-comments")[0]).text(count_rest_comments);
+                    } else if(count_rest_comments == 1) {
+                        $(this).html('<i class="ti-hand-point-right"></i> 1 reply');
+                    }
+                } else {
+                    $(this).remove();
+                }
+                $(hidden_comments).each(function() {
+                    $(this).fadeIn();
+                });
+            });
+
+            $(document).on("keyup", ".comment", function() {
+                $(this).removeClass("is-invalid");
+                $(this).next().remove("span");
             });
 
             $(document).on("submit", ".comment-form", function(e) {
                 e.preventDefault();
                 var target_form = this;
                 
+                $(target_form).find(".comment").removeClass("is-invalid");
+                $(target_form).find(".comment").next().remove("span");
+
                 var formData = new FormData(this);
                 $.ajax({
                     url: "{{ route('comment') }}",
@@ -87,22 +119,22 @@
                             } else {
                                 $(".comment-list[data-comment_list_comment_id='"+parent_id+"']").append(html);
                             }
+
                             $("textarea[name='comment']", target_form).val('');
-                            $(target_form).hide();
-                            $(target_form).next(".expand-comment-list").remove();
-                            $(".comment-list[data-comment_list_comment_id='"+parent_id+"']").fadeIn();
+
+                            if(!$(target_form).hasClass('comment-to-article')) {
+                                $(target_form).hide();
+                                $(target_form).next(".expand-entire-comment-list").remove();
+                                $(".comment-list[data-comment_list_comment_id='"+parent_id+"']").fadeIn();
+                            }
+
+                            getTotalNumberOfComments();
                         } else {
-                            var errors = response.error;
+                            var errors = response.message;
                             $.each(errors, function(key, error) {
-                                if(key == "article-thumbnail") {
-                                    $("#upload-article-thumbnail-btn").addClass("is-invalid");
-                                    $("#upload-article-thumbnail-btn").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
-                                } else if(key == "article-title") {
-                                    $("#article-title").addClass("is-invalid");
-                                    $("#article-title").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
-                                } else if(key == "article") {
-                                    $("#article-editor").addClass("is-invalid");
-                                    $(".ck.ck-reset.ck-editor.ck-rounded-corners").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
+                                if(key == "comment") {
+                                    $(target_form).find(".comment").addClass("is-invalid");
+                                    $(target_form).find(".comment").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
                                 }
                             });
                         }

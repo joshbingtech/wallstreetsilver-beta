@@ -1,5 +1,5 @@
 @foreach($comments as $key => $comment)
-    <div class="comment-item">
+    <div class="comment-item" style="@if($key > 2) display:none; @endif">
         @if(isset($comment->user->profile_avatar_url) && !empty($comment->user->profile_avatar_url))
             <img src="{{ asset(images/icons/odysee-logo.png) }}">
         @else
@@ -15,7 +15,7 @@
                 <strong class="expand-comment" data-comment="{{ $comment->comment }}"> See more </strong>
             @endif
             <div class="comment-react">
-                <a class="button-tertiary show-reply-form"> Replay </a>
+                <a class="button-tertiary show-reply-form"> Reply </a>
                 <a href="#" class="button-tertiary comment-react-like"><i class="ti-thumb-up"></i></a>
                 <a href="#" class="button-tertiary comment-react-dislike"><i class="ti-thumb-down"></i></a>
             </div>
@@ -33,9 +33,9 @@
             </form>
             @if($comment->depth > 1)
                 @if(count($comment->replies) > 1)
-                    <a class="button-tertiary expand-comment-list"><i class="ti-hand-point-right"></i> {{ count($comment->replies) }} replies </a>
+                    <a class="button-tertiary expand-entire-comment-list"><i class="ti-hand-point-right"></i> {{ count($comment->replies) }} replies </a>
                 @elseif(count($comment->replies) == 1)
-                    <a class="button-tertiary expand-comment-list"><i class="ti-hand-point-right"></i> 1 reply </a>
+                    <a class="button-tertiary expand-entire-comment-list"><i class="ti-hand-point-right"></i> 1 reply </a>
                 @endif
             @endif
             <div class="comment-list" data-comment_list_comment_id="{{ $comment->id }}" style="@if($comment->depth > 1) display:none; @endif">
@@ -44,3 +44,8 @@
         </div>
     </div>
 @endforeach
+@if(count($comments) == 3)
+    <a class="button-tertiary expand-comment-list"><i class="ti-hand-point-right"></i> 1 relpy </a>
+@elseif(count($comments) > 3)
+    <a class="button-tertiary expand-comment-list"><i class="ti-hand-point-right"></i> <span class="count-rest-comments"> {{ count($comments) - 3 }} </span> replies </a>
+@endif
