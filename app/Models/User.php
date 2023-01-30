@@ -27,7 +27,8 @@ class User extends Authenticatable
         'profile_avatar_url',
         'status',
         'invite_token',
-        'invited_at'
+        'invited_at',
+        'avatar_color'
     ];
 
     /**

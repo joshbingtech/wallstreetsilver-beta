@@ -76,6 +76,7 @@ class UserController extends Controller
             'password' => '',
             'role' => 0,
             'profile_avatar_url' => '',
+            'avatar_color' => random_color(),
             'status' => 2,
             'invite_token' => $token,
             'invited_at' => Carbon::now()->toDateTimeString()
@@ -111,6 +112,7 @@ class UserController extends Controller
             'password' => '',
             'role' => 1,
             'profile_avatar_url' => '',
+            'avatar_color' => random_color(),
             'status' => 2,
             'invite_token' => $token,
             'invited_at' => Carbon::now()->toDateTimeString()
@@ -146,6 +148,7 @@ class UserController extends Controller
             'password' => '',
             'role' => 2,
             'profile_avatar_url' => '',
+            'avatar_color' => random_color(),
             'status' => 2,
             'invite_token' => $token,
             'invited_at' => Carbon::now()->toDateTimeString()

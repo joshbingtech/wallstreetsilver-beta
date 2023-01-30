@@ -70,6 +70,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'role' => 2,
             'profile_avatar_url' => '',
+            'avatar_color' => random_color()
         ]);
     }
 }

@@ -3,7 +3,7 @@
         @if(isset($comment->user->profile_avatar_url) && !empty($comment->user->profile_avatar_url))
             <img src="{{ asset(images/icons/odysee-logo.png) }}">
         @else
-            <div class="user-avatar-alternative" style="background-color: {{ random_color() }}"> {{ substr($comment->user->name, 0, 1) }} </div>
+            <div class="user-avatar-alternative" style="background-color: {{ $comment->user->avatar_color }}"> {{ substr($comment->user->name, 0, 1) }} </div>
         @endif
         <div class="comment-wrapper">
             <div><strong> {{ $comment->user->name }} </strong></div>
