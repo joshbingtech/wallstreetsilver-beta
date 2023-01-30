@@ -90,11 +90,6 @@
                 });
             });
 
-            $(document).on("keyup", ".comment", function() {
-                $(this).removeClass("is-invalid");
-                $(this).next().remove("span");
-            });
-
             $(document).on("submit", ".comment-form", function(e) {
                 e.preventDefault();
                 var target_form = this;
@@ -140,6 +135,14 @@
                         }
                     }
                 });
+            });
+
+            $(document).on("click", ".comment-react-like", function() {
+                
+            });
+
+            $(document).on("click", ".comment-react-dislike", function() {
+                
             });
         });
     </script>

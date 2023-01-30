@@ -14,10 +14,10 @@
                 <p class="comment"> {{ character_limiter($comment->comment, 200) }} </p>
                 <strong class="expand-comment" data-comment="{{ $comment->comment }}"> See more </strong>
             @endif
-            <div class="comment-react">
+            <div class="comment-react" data-comment_id="{{ $comment->id }}">
                 <a class="button-tertiary show-reply-form"> Reply </a>
-                <a href="#" class="button-tertiary comment-react-like"><i class="ti-thumb-up"></i></a>
-                <a href="#" class="button-tertiary comment-react-dislike"><i class="ti-thumb-down"></i></a>
+                <a href="#" class="button-tertiary comment-react-like"><i class="ti-thumb-up"></i> {{ count($comment->likes) }} </a>
+                <a href="#" class="button-tertiary comment-react-dislike"><i class="ti-thumb-down"></i> {{ count($comment->dislikes) }} </a>
             </div>
             <form class="comment-form" method="post" action="{{ route('comment') }}" style="display: none;">
                 @csrf

@@ -126,8 +126,6 @@
             });
 
             $("#article-title").bind("keyup", function() {
-                $("#article-title").removeClass("is-invalid");
-                $("#article-title").next().remove("span");
                 $("#article-title-preview").html($(this).val());
             });
 

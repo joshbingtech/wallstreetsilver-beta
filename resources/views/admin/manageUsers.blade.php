@@ -142,11 +142,6 @@
             });
         });
 
-        $("#email").bind("keyup", function() {
-            $("#email").removeClass("is-invalid");
-            $("#email").next().remove("span");
-        });
-
         $(".lock-btn").click(function(e) {
             e.preventDefault();
             var lock_btn = $(this);

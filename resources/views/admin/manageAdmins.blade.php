@@ -115,10 +115,5 @@
                 }
             });
         });
-
-        $("#email").bind("keyup", function() {
-            $("#email").removeClass("is-invalid");
-            $("#email").next().remove("span");
-        });
     </script>
 @endpush
