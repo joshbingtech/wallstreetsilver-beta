@@ -30,9 +30,9 @@
                             <td class="text-center"> {{ $article['views'] }} </td>
                             <td class="text-center"> {{ $article['name'] }} </td>
                             <td class="text-center"> {{ $article['created_at'] }} </td>
-                            <td class="text-center"> <a href="{{ route('admin/edit-article-view', $article['id']) }}" class="icon-action"><i class="ti-pencil-alt"></i></a> </td>
+                            <td class="text-center"> <a href="{{ route('admin/edit-article-view', $article['id']) }}" class="icon-action"><i class="fa-solid fa-file-pen"></i></a> </td>
                             <td class="text-center">
-                                <a href="#" class="delete-btn icon-action"><i class="ti-trash"></i></a>
+                                <a href="#" class="delete-btn icon-action"><i class="fa-solid fa-trash"></i></a>
                                 <div class="dot-opacity-loader" style="display: none;">
                                     <span></span>
                                     <span></span>

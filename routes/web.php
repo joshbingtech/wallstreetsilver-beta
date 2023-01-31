@@ -49,6 +49,8 @@ Route::get('/home', [App\Http\Controllers\User\HomeController::class, 'index'])-
 Route::get('/news', [App\Http\Controllers\User\NewsController::class, 'index'])->name('news');
 Route::get('/news/{article_id}', [App\Http\Controllers\User\NewsController::class, 'displayArticle'])->name('display-article');
 Route::post('/comment', [App\Http\Controllers\User\CommentController::class, 'create'])->middleware('auth')->name('comment');
+Route::post('/comment-like', [App\Http\Controllers\User\CommentController::class, 'like'])->middleware('auth')->name('comment-like');
+Route::post('/comment-dislike', [App\Http\Controllers\User\CommentController::class, 'dislike'])->middleware('auth')->name('comment-dislike');
 
 // routes for charts
 Route::get('/charts/spot-gold', [App\Http\Controllers\User\ChartController::class, 'spotGold'])->name('charts/spot-gold');

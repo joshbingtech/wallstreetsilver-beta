@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -38,5 +39,15 @@ class Comment extends Model
     public function dislikes()
     {
         return $this->hasMany(Reaction::class)->where('action', 0);
+    }
+
+    public function user_liked()
+    {
+        return $this->hasMany(Reaction::class)->where('action', 1)->where('user_id', Auth::user()->id);
+    }
+
+    public function user_disliked()
+    {
+        return $this->hasMany(Reaction::class)->where('action', 0)->where('user_id', Auth::user()->id);
     }
 }

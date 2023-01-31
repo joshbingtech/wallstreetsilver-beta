@@ -24,6 +24,7 @@ class NewsController extends Controller
         if(!isset($result) && empty($result)) {
             abort(404);
         }
+        
         $data = [
             'article' => $result,
             'current_nav_tab' => 'news',

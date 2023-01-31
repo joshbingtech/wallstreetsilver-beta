@@ -15,7 +15,7 @@
                                         <h6 class="text-muted"> {{ $total_articles_current_month }} new articles this month </h6>
                                     </div>
                                     <div class="icon-box icon-box-bg-image-warning">
-                                        <i class="ti-write gradient-card-icon"></i>
+                                        <i class="fa-solid fa-file gradient-card-icon"></i>
                                     </div>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                         <h6 class="text-muted"> 9,120 comments this month</h6>
                                     </div>
                                     <div class="icon-box icon-box-bg-image-danger">
-                                        <i class="ti-comments gradient-card-icon"></i>
+                                        <i class="fa-solid fa-comment-dots gradient-card-icon"></i>
                                     </div>
                                 </div>
                             </div>

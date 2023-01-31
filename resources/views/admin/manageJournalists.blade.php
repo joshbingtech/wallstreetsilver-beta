@@ -29,7 +29,7 @@
                                 </td>
                                 <td class="text-center"> {{ $journalist['created_at'] }} </td>
                                 <td class="text-center">
-                                    <a href="#" class="unlock-btn icon-action"><i class="ti-unlock"></i></a>
+                                    <a href="#" class="unlock-btn icon-action"><i class="fa-solid fa-unlock"></i></a>
                                     <div class="dot-opacity-loader" style="display: none;">
                                         <span></span>
                                         <span></span>
@@ -48,7 +48,7 @@
                                 @endif
                                 <td class="text-center"> {{ $journalist['created_at'] }} </td>
                                 <td class="text-center">
-                                    <a href="#" class="lock-btn icon-action"><i class="ti-lock"></i></a>
+                                    <a href="#" class="lock-btn icon-action"><i class="fa-solid fa-lock"></i></a>
                                     <div class="dot-opacity-loader" style="display: none;">
                                         <span></span>
                                         <span></span>

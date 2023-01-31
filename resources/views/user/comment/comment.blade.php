@@ -15,11 +15,11 @@
                 <strong class="expand-comment" data-comment="{{ $comment->comment }}"> See more </strong>
             @endif
             <div class="comment-react" data-comment_id="{{ $comment->id }}">
-                <a class="button-tertiary show-reply-form"> Reply </a>
-                <a href="#" class="button-tertiary comment-react-like"><i class="ti-thumb-up"></i> {{ count($comment->likes) }} </a>
-                <a href="#" class="button-tertiary comment-react-dislike"><i class="ti-thumb-down"></i> {{ count($comment->dislikes) }} </a>
+                <a class="button-tertiary show-reply-form"><i class="fa-solid fa-reply"></i> Reply </a>
+                <a href="#" class="button-tertiary comment-react-like"><i class="@if(count($comment->user_liked)) fa-solid @else fa-regular @endif fa-thumbs-up"></i><span> {{ count($comment->likes) }} </span></a>
+                <a href="#" class="button-tertiary comment-react-dislike"><i class="@if(count($comment->user_disliked)) fa-solid @else fa-regular @endif fa-thumbs-down"></i><span> {{ count($comment->dislikes) }} </span></a>
             </div>
-            <form class="comment-form" method="post" action="{{ route('comment') }}" style="display: none;">
+            <form class="comment-form" style="display: none;">
                 @csrf
                 <div class="form-group">
                     <textarea class="form-control comment" name="comment" placeholder="Reply to {{ $comment->user->name }}"></textarea>
@@ -33,9 +33,9 @@
             </form>
             @if($comment->depth > 1)
                 @if(count($comment->replies) > 1)
-                    <a class="button-tertiary expand-entire-comment-list"><i class="ti-hand-point-right"></i> {{ count($comment->replies) }} replies </a>
+                    <a class="button-tertiary expand-entire-comment-list"><i class="fa-solid fa-comment"></i> {{ count($comment->replies) }} replies </a>
                 @elseif(count($comment->replies) == 1)
-                    <a class="button-tertiary expand-entire-comment-list"><i class="ti-hand-point-right"></i> 1 reply </a>
+                    <a class="button-tertiary expand-entire-comment-list"><i class="fa-solid fa-comment"></i> 1 reply </a>
                 @endif
             @endif
             <div class="comment-list" data-comment_list_comment_id="{{ $comment->id }}" style="@if($comment->depth > 1) display:none; @endif">
@@ -45,7 +45,7 @@
     </div>
 @endforeach
 @if(count($comments) == 3)
-    <a class="button-tertiary expand-comment-list"><i class="ti-hand-point-right"></i> 1 relpy </a>
+    <a class="button-tertiary expand-comment-list"><i class="fa-solid fa-comment"></i> 1 relpy </a>
 @elseif(count($comments) > 3)
-    <a class="button-tertiary expand-comment-list"><i class="ti-hand-point-right"></i> <span class="count-rest-comments"> {{ count($comments) - 3 }} </span> replies </a>
+    <a class="button-tertiary expand-comment-list"><i class="fa-solid fa-comment"></i> <span class="count-rest-comments"> {{ count($comments) - 3 }} </span> replies </a>
 @endif

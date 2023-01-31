@@ -21,7 +21,7 @@
                 </div>
             </div>
             <hr />
-            <form class="comment-form comment-to-article" method="post" action="{{ route('comment') }}">
+            <form class="comment-form comment-to-article">
                 @csrf
                 <div class="form-group">
                     <textarea class="form-control comment" name="comment" placeholder="@if(count($article->comments) == 0) Be the first to comment... @else What do you think?  @endif"></textarea>
@@ -80,7 +80,7 @@
                     if(count_rest_comments > 1) {
                         $($(this).find(".count-rest-comments")[0]).text(count_rest_comments);
                     } else if(count_rest_comments == 1) {
-                        $(this).html('<i class="ti-hand-point-right"></i> 1 reply');
+                        $(this).html('<i class="fa-solid fa-comment"></i> 1 reply');
                     }
                 } else {
                     $(this).remove();
@@ -137,12 +137,50 @@
                 });
             });
 
-            $(document).on("click", ".comment-react-like", function() {
-                
+            $(document).on("click", ".comment-react-like", function(e) {
+                e.preventDefault();
+                var that = this;
+                var comment_id = $(this).parent().data("comment_id");
+                $.ajax({
+                    url: "{{ route('comment-like') }}",
+                    type: 'POST',
+                    data: {
+                        comment_id: comment_id
+                    },
+                    success: function (response) {
+                        var like_count = parseInt($($(that).find("span")[0]).html());
+                        if(response.status) {
+                            if(response.action == "like") {
+                                $(that).html('<i class="fa-solid fa-thumbs-up"></i><span> ' + (like_count + 1).toString() + ' </span>');
+                            } else if(response.action == "delete") {
+                                $(that).html('<i class="fa-regular fa-thumbs-up"></i><span> ' + (like_count - 1).toString() + ' </span>');
+                            }
+                        }
+                    }
+                });
             });
 
-            $(document).on("click", ".comment-react-dislike", function() {
-                
+            $(document).on("click", ".comment-react-dislike", function(e) {
+                e.preventDefault();
+                var that = this;
+                var comment_id = $(this).parent().data("comment_id");
+                $.ajax({
+                    url: "{{ route('comment-dislike') }}",
+                    type: 'POST',
+                    data: {
+                        comment_id: comment_id
+                    },
+                    success: function (response) {
+                        var dislike_count = parseInt($($(that).find("span")[0]).html());
+                        if(response.status) {
+                            if(response.action == "dislike") {
+                                $(that).html('<i class="fa-solid fa-thumbs-down"></i><span> ' + (dislike_count + 1).toString() + ' </span>');
+                            } else if(response.action == "delete") {
+                                $(that).html('<i class="fa-regular fa-thumbs-down"></i><span> ' + (dislike_count - 1).toString() + ' </span>');
+                            }
+                        }
+                    }
+                });
             });
         });
     </script>
