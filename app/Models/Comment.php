@@ -43,11 +43,19 @@ class Comment extends Model
 
     public function user_liked()
     {
-        return $this->hasMany(Reaction::class)->where('action', 1)->where('user_id', Auth::user()->id);
+        $user_id = 0;
+        if(Auth::check()) {
+            $user_id =  Auth::user()->id;
+        }
+        return $this->hasMany(Reaction::class)->where('action', 1)->where('user_id', $user_id);
     }
 
     public function user_disliked()
     {
-        return $this->hasMany(Reaction::class)->where('action', 0)->where('user_id', Auth::user()->id);
+        $user_id = 0;
+        if(Auth::check()) {
+            $user_id =  Auth::user()->id;
+        }
+        return $this->hasMany(Reaction::class)->where('action', 0)->where('user_id', $user_id);
     }
 }
