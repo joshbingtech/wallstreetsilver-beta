@@ -6,7 +6,7 @@
             <div class="user-avatar-alternative" style="background-color: {{ $comment->user->avatar_color }}"> {{ substr($comment->user->name, 0, 1) }} </div>
         @endif
         <div class="comment-wrapper">
-            <div><strong> {{ $comment->user->name }} </strong></div>
+            <div><strong> @if($comment->user->role == 0) Administrator @else {{ $comment->user->name }} @endif </strong></div>
             <span class="comment-timestamp"> {{ timeDiff($comment->created_at) }} </span>
             @if(strlen($comment->comment) < 200)
                 <p class="comment"> {{ $comment->comment }} </p>
