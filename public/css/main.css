@@ -871,6 +871,14 @@ table.dataTable.stripe tr.odd {
     font-weight: normal;
     margin-left: 10px;
 }
+.views-count {
+    display: flex;
+    float: right;
+    font-weight: normal;
+}
+.views-count img {
+    width: 30px;
+}
 .comment-item {
     display: flex;
 }

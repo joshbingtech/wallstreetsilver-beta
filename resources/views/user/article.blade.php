@@ -11,6 +11,7 @@
             <h4>
                 Conversation
                 <span class="comments-count"> No Comments Yet </span>
+                <span class="views-count"><img src="{{ asset('images/icons/view-count.png') }}"> {{ $article['views'] }}</span>
             </h4>
             @if(count($article->comments) > 0)
                 <hr />
