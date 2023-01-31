@@ -37,6 +37,44 @@
         <div class="col-md-3 mt-3">
         </div>
     </div>
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="auth-form text-left">
+                        <img class="banner mb-3" src="{{ asset('images/banner.png') }}" />
+                        <h4> We just like Silver. </h4>
+                        <h6 class="font-weight-light"> Sign in to continue. </h6>
+                        <form class="pt-3" method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="form-group">
+                                <input id="email" type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Email Address" required autocomplete="email" autofocus>
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <input id="password" type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-block btn-gradient-primary btn-lg auth-form-btn"> SIGN IN </button>
+                            </div>
+                            <div class="text-center mt-4">
+                                Don't have an account? <a href="{{ route('register') }}" class="button-secondary"> Sign Up </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 @push('scripts')
@@ -127,12 +165,16 @@
                             getTotalNumberOfComments();
                         } else {
                             var errors = response.message;
-                            $.each(errors, function(key, error) {
-                                if(key == "comment") {
-                                    $(target_form).find(".comment").addClass("is-invalid");
-                                    $(target_form).find(".comment").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
-                                }
-                            });
+                            if(errors == "Unauthorised user.") {
+                                $("#loginModal").modal("show");
+                            } else {
+                                $.each(errors, function(key, error) {
+                                    if(key == "comment") {
+                                        $(target_form).find(".comment").addClass("is-invalid");
+                                        $(target_form).find(".comment").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
+                                    }
+                                });
+                            }
                         }
                     }
                 });
@@ -156,6 +198,11 @@
                             } else if(response.action == "delete") {
                                 $(that).html('<i class="fa-regular fa-thumbs-up"></i><span> ' + (like_count - 1).toString() + ' </span>');
                             }
+                        } else {
+                            var errors = response.message;
+                            if(errors == "Unauthorised user.") {
+                                $("#loginModal").modal("show");
+                            }
                         }
                     }
                 });
@@ -178,6 +225,11 @@
                                 $(that).html('<i class="fa-solid fa-thumbs-down"></i><span> ' + (dislike_count + 1).toString() + ' </span>');
                             } else if(response.action == "delete") {
                                 $(that).html('<i class="fa-regular fa-thumbs-down"></i><span> ' + (dislike_count - 1).toString() + ' </span>');
+                            }
+                        } else {
+                            var errors = response.message;
+                            if(errors == "Unauthorised user.") {
+                                $("#loginModal").modal("show");
                             }
                         }
                     }

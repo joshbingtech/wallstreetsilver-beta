@@ -25,9 +25,11 @@ class LoginController extends Controller
     protected function authenticated()
     {
         if(Auth::user()->role == '0') {
+            notify()->success("You've logged in successfully.");
             return redirect('admin/dashboard')->with('status', 'Welcome to admin portal');
         } else {
-            return redirect('/home')->with('status', 'logged in successfully');
+            notify()->success("You've logged in successfully.");
+            return redirect()->back();
         }
     }
 
