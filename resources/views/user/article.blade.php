@@ -235,6 +235,60 @@
                     }
                 });
             });
+
+            $(document).on("click", ".comment-delete", function(e) {
+                e.preventDefault();
+                var that = this;
+                var comment_id = $(this).parent().data("comment_id");
+                $.ajax({
+                    url: "{{ route('admin/delete-comment') }}",
+                    type: 'POST',
+                    data: {
+                        comment_id: comment_id
+                    },
+                    success: function (response) {
+                        if(response.status) {
+                            if(response.action == "delete") {
+                                location.reload();
+                            }
+                        } else {
+                            var errors = response.message;
+                            if(errors == "Unauthorised user.") {
+                                $("#loginModal").modal("show");
+                            } else {
+                                location.reload();
+                            }
+                        }
+                    }
+                });
+            });
+
+            $(document).on("click", ".comment-restore", function(e) {
+                e.preventDefault();
+                var that = this;
+                var comment_id = $(this).parent().data("comment_id");
+                $.ajax({
+                    url: "{{ route('admin/restore-comment') }}",
+                    type: 'POST',
+                    data: {
+                        comment_id: comment_id
+                    },
+                    success: function (response) {
+                        if(response.status) {
+                            if(response.action == "restore") {
+                                location.reload();
+                            }
+                        } else {
+                            var errors = response.message;
+                            if(errors == "Unauthorised user.") {
+                                $("#loginModal").modal("show");
+                            } else {
+                                location.reload();
+                            }
+                        }
+                    }
+                });
+            });
         });
     </script>
 @endpush

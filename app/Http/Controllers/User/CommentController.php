@@ -61,8 +61,8 @@ class CommentController extends Controller
         if(Auth::check()) {
             $comment_id = $request->get('comment_id');
             $user_id = Auth::user()->id;
-            $comment = Reaction::where('comment_id', $comment_id)->where('user_id', $user_id)->where('action', 1)->first();
-            if($comment) {
+            $reaction = Reaction::where('comment_id', $comment_id)->where('user_id', $user_id)->where('action', 1)->first();
+            if($reaction) {
                 $delete_like = Reaction::where('comment_id', $comment_id)->where('user_id', $user_id)->where('action', 1)->delete();
                 return response()->json(['status' => true, 'action' => 'delete']);
             } else {
@@ -85,8 +85,8 @@ class CommentController extends Controller
         if(Auth::check()) {
             $comment_id = $request->get('comment_id');
             $user_id = Auth::user()->id;
-            $comment = Reaction::where('comment_id', $comment_id)->where('user_id', $user_id)->where('action', 0)->first();
-            if($comment) {
+            $reaction = Reaction::where('comment_id', $comment_id)->where('user_id', $user_id)->where('action', 0)->first();
+            if($reaction) {
                 $delete_like = Reaction::where('comment_id', $comment_id)->where('user_id', $user_id)->where('action', 0)->delete();
                 return response()->json(['status' => true, 'action' => 'delete']);
             } else {

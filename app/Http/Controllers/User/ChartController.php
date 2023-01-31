@@ -118,4 +118,100 @@ class ChartController extends Controller
         ];
         return view('user/chart/silverGoldRatio', $data);
     }
+
+    public function livePlatinumPrice()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/livePlatinumPrice', $data);
+    }
+
+    public function platinumPricePerOunce()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/platinumPricePerOunce', $data);
+    }
+
+    public function platinumPricePerGram()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/platinumPricePerGram', $data);
+    }
+
+    public function platinumPricePerKilo()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/platinumPricePerKilo', $data);
+    }
+
+    public function platinumPriceHistory()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/platinumPriceHistory', $data);
+    }
+
+    public function goldPlatinumRatio()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/goldPlatinumRatio', $data);
+    }
+
+    public function livePalladiumPrice()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/livePalladiumPrice', $data);
+    }
+
+    public function palladiumPricePerOunce()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/palladiumPricePerOunce', $data);
+    }
+
+    public function palladiumPricePerGram()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/palladiumPricePerGram', $data);
+    }
+
+    public function palladiumPricePerKilo()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/palladiumPricePerKilo', $data);
+    }
+
+    public function palladiumPriceHistory()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/palladiumPriceHistory', $data);
+    }
+
+    public function goldPalladiumRatio()
+    {
+        $data = [
+            'current_nav_tab' => 'charts',
+        ];
+        return view('user/chart/goldPalladiumRatio', $data);
+    }
 }

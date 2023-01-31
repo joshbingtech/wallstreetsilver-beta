@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +33,7 @@ class ArticleController extends Controller
         return view('admin/createArticle', $data);
     }
 
-    public function create(Request $request)
+    public function createArticle(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'article-thumbnail' => 'required|image|mimes:gif,jpeg,webp,bmp,png',
@@ -75,7 +76,7 @@ class ArticleController extends Controller
         }
     }
 
-    public function edit(Request $request)
+    public function editArticle(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'article-id' => 'required|numeric',
@@ -109,7 +110,7 @@ class ArticleController extends Controller
         }
     }
 
-    public function delete(Request $request)
+    public function deleteArticle(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'article_id' => ['required', 'integer'],
@@ -128,6 +129,66 @@ class ArticleController extends Controller
         } else {
             notify()->error('Unable to find an article.');
             return response()->json(['error' => 'Unable to find an article.']);
+        }
+    }
+
+    public function deleteComment(Request $request)
+    {
+        if(Auth::check()) {
+            if(Auth::user()->role == '0') {
+                $comment_id = $request->get('comment_id');
+                $comment = Comment::find($comment_id)->delete();
+                if($comment) {
+                    notify()->success("You've deleted the comment successfully.");
+                    return response()->json(['status' => true, 'action' => 'delete']);
+                } else {
+                    notify()->error('Unable to delete the comment.');
+                    return response()->json([
+                        'status' => false,
+                        'message' => "Something went wrong. Please try again later."
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => "Unauthorised user."
+                ]);
+            }
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => "Unauthorised user."
+            ]);
+        }
+    }
+
+    public function restoreComment(Request $request)
+    {
+        if(Auth::check()) {
+            if(Auth::user()->role == '0') {
+                $comment_id = $request->get('comment_id');
+                $comment = Comment::withTrashed()->find($comment_id)->restore();
+                if($comment) {
+                    notify()->success("You've restored the article successfully.");
+                    return response()->json(['status' => true, 'action' => 'restore']);
+                } else {
+                    notify()->error('Unable to restore the comment.');
+                    return response()->json([
+                        'status' => false,
+                        'message' => "Something went wrong. Please try again later."
+                    ]);
+                }
+            } else {
+                return response()->json([
+                    'status' => false,
+                    'message' => "Unauthorised user."
+                ]);
+            }
+        } else {
+            return response()->json([
+                'status' => false,
+                'message' => "Unauthorised user."
+            ]);
         }
     }
 }

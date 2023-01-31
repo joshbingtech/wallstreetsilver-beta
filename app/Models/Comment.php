@@ -24,12 +24,12 @@ class Comment extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function replies()
     {
-        return $this->hasMany(Comment::class, 'parent_id');
+        return $this->hasMany(Comment::class, 'parent_id')->withTrashed();
     }
 
     public function likes()
@@ -62,13 +62,13 @@ class Comment extends Model
 
     public function countAllComments()
     {
-        return $this->count();
+        return $this->withTrashed()->count();
     }
 
     public function countCommentsOfCurrentMonth()
     {
         return $this->whereYear('created_at', Carbon::now()->year)
-            ->whereMonth('created_at', Carbon::now()->month)
+            ->whereMonth('created_at', Carbon::now()->month)->withTrashed()
             ->count();
     }
 }

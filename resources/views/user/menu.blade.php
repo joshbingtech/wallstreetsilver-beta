@@ -20,7 +20,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-md-6 col-lg-6">
                         <div class="h3">
-                            <img src="{{ asset('images/images/small-gold-bar-1.png') }}"> Gold Price Charts
+                            <img src="{{ asset('images/images/small-gold-bar-1.png') }}"> Gold
                         </div>
                         <div><a class="dropdown-item" href="{{ route('charts/spot-gold') }}"> Spot Gold </a></div>
                         <div><a class="dropdown-item" href="{{ route('charts/live-gold-price') }}"> Live Gold Price </a></div>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-xs-12 col-md-6 col-lg-6">
                         <div class="h3">
-                            <img src="{{ asset('images/images/small-silver-bar-1.png') }}"> Silver Price Charts
+                            <img src="{{ asset('images/images/small-silver-bar-1.png') }}"> Silver
                         </div>
                         <div><a class="dropdown-item" href="{{ route('charts/spot-silver') }}"> Spot Silver </a></div>
                         <div><a class="dropdown-item" href="{{ route('charts/live-silver-price') }}"> Live Silver Price </a></div>
@@ -41,6 +41,31 @@
                         <div><a class="dropdown-item" href="{{ route('charts/silver-price-per-kilo') }}"> Silver Price Per Kilo </a></div>
                         <div><a class="dropdown-item" href="{{ route('charts/silver-price-history') }}"> Silver Price History </a></div>
                         <div><a class="dropdown-item" href="{{ route('charts/silver-gold-ratio') }}"> Silver Gold Ratio </a></div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="h3">
+                            <img src="{{ asset('images/images/small-silver-bar-1.png') }}"> Platinum
+                        </div>
+                        <div><a class="dropdown-item" href="{{ route('charts/live-platinum-price') }}"> Live Platinum Price </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/platinum-price-per-ounce') }}"> Platinum Price Per Ounce </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/platinum-price-per-gram') }}"> Platinum Price Per Gram </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/platinum-price-per-kilo') }}"> Platinum Price Per Kilo </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/platinum-price-history') }}"> Platinum Price History </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/gold-platinum-ratio') }}"> Gold Platinum Ratio </a></div>
+                    </div>
+                    <div class="col-xs-12 col-md-6 col-lg-6">
+                        <div class="h3">
+                            <img src="{{ asset('images/images/small-silver-bar-1.png') }}"> Palladium
+                        </div>
+                        <div><a class="dropdown-item" href="{{ route('charts/live-palladium-price') }}"> Live Palladium Price </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/palladium-price-per-ounce') }}"> Palladium Price Per Ounce </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/palladium-price-per-gram') }}"> Palladium Price Per Gram </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/palladium-price-per-kilo') }}"> Palladium Price Per Kilo </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/palladium-price-history') }}"> Palladium Price History </a></div>
+                        <div><a class="dropdown-item" href="{{ route('charts/gold-palladium-ratio') }}"> Gold Palladium Ratio </a></div>
                     </div>
                 </div>
             </div>

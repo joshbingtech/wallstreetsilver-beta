@@ -23,10 +23,12 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin/dashboard');
     Route::get('/articles', [App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('admin/articles');
     Route::get('/create-article', [App\Http\Controllers\Admin\ArticleController::class, 'createView'])->name('admin/create-article-view');
-    Route::post('/create-article', [App\Http\Controllers\Admin\ArticleController::class, 'create'])->name('admin/create-article');
+    Route::post('/create-article', [App\Http\Controllers\Admin\ArticleController::class, 'createArticle'])->name('admin/create-article');
     Route::get('/edit-article/{article_id}', [App\Http\Controllers\Admin\ArticleController::class, 'editView'])->name('admin/edit-article-view');
-    Route::post('/edit-article', [App\Http\Controllers\Admin\ArticleController::class, 'edit'])->name('admin/edit-article');
-    Route::post('/delete-article', [App\Http\Controllers\Admin\ArticleController::class, 'delete'])->name('admin/delete-article');
+    Route::post('/edit-article', [App\Http\Controllers\Admin\ArticleController::class, 'editArticle'])->name('admin/edit-article');
+    Route::post('/delete-article', [App\Http\Controllers\Admin\ArticleController::class, 'deleteArticle'])->name('admin/delete-article');
+    Route::post('/delete-comment', [App\Http\Controllers\Admin\ArticleController::class, 'deleteComment'])->name('admin/delete-comment');
+    Route::post('/restore-comment', [App\Http\Controllers\Admin\ArticleController::class, 'restoreComment'])->name('admin/restore-comment');
 
     Route::get('/manage-admins', [App\Http\Controllers\Admin\UserController::class, 'manageAdmins'])->name('admin/manage-admins');
     Route::get('/manage-journalists', [App\Http\Controllers\Admin\UserController::class, 'manageJournalists'])->name('admin/manage-journalists');
@@ -52,7 +54,7 @@ Route::post('/comment', [App\Http\Controllers\User\CommentController::class, 'cr
 Route::post('/comment-like', [App\Http\Controllers\User\CommentController::class, 'like'])->name('comment-like');
 Route::post('/comment-dislike', [App\Http\Controllers\User\CommentController::class, 'dislike'])->name('comment-dislike');
 
-// routes for charts
+// routes for gold charts
 Route::get('/charts/spot-gold', [App\Http\Controllers\User\ChartController::class, 'spotGold'])->name('charts/spot-gold');
 Route::get('/charts/live-gold-price', [App\Http\Controllers\User\ChartController::class, 'liveGoldPrice'])->name('charts/live-gold-price');
 Route::get('/charts/gold-price-per-ounce', [App\Http\Controllers\User\ChartController::class, 'goldPricePerOunce'])->name('charts/gold-price-per-ounce');
@@ -61,6 +63,7 @@ Route::get('/charts/gold-price-per-kilo', [App\Http\Controllers\User\ChartContro
 Route::get('/charts/gold-price-history', [App\Http\Controllers\User\ChartController::class, 'goldPriceHistory'])->name('charts/gold-price-history');
 Route::get('/charts/gold-silver-ratio', [App\Http\Controllers\User\ChartController::class, 'goldSilverRatio'])->name('charts/gold-silver-ratio');
 
+// routes for silver charts
 Route::get('/charts/spot-silver', [App\Http\Controllers\User\ChartController::class, 'spotSilver'])->name('charts/spot-silver');
 Route::get('/charts/live-silver-price', [App\Http\Controllers\User\ChartController::class, 'liveSilverPrice'])->name('charts/live-silver-price');
 Route::get('/charts/silver-price-per-ounce', [App\Http\Controllers\User\ChartController::class, 'silverPricePerOunce'])->name('charts/silver-price-per-ounce');
@@ -68,6 +71,22 @@ Route::get('/charts/silver-price-per-gram', [App\Http\Controllers\User\ChartCont
 Route::get('/charts/silver-price-per-kilo', [App\Http\Controllers\User\ChartController::class, 'silverPricePerKilo'])->name('charts/silver-price-per-kilo');
 Route::get('/charts/silver-price-history', [App\Http\Controllers\User\ChartController::class, 'silverPriceHistory'])->name('charts/silver-price-history');
 Route::get('/charts/silver-gold-ratio', [App\Http\Controllers\User\ChartController::class, 'silverGoldRatio'])->name('charts/silver-gold-ratio');
+
+// routes for platinum charts
+Route::get('/charts/live-platinum-price', [App\Http\Controllers\User\ChartController::class, 'livePlatinumPrice'])->name('charts/live-platinum-price');
+Route::get('/charts/platinum-price-per-ounce', [App\Http\Controllers\User\ChartController::class, 'platinumPricePerOunce'])->name('charts/platinum-price-per-ounce');
+Route::get('/charts/platinum-price-per-gram', [App\Http\Controllers\User\ChartController::class, 'platinumPricePerGram'])->name('charts/platinum-price-per-gram');
+Route::get('/charts/platinum-price-per-kilo', [App\Http\Controllers\User\ChartController::class, 'platinumPricePerKilo'])->name('charts/platinum-price-per-kilo');
+Route::get('/charts/platinum-price-history', [App\Http\Controllers\User\ChartController::class, 'platinumPriceHistory'])->name('charts/platinum-price-history');
+Route::get('/charts/gold-platinum-ratio', [App\Http\Controllers\User\ChartController::class, 'goldPlatinumRatio'])->name('charts/gold-platinum-ratio');
+
+// routes for palladium charts
+Route::get('/charts/live-palladium-price', [App\Http\Controllers\User\ChartController::class, 'livePalladiumPrice'])->name('charts/live-palladium-price');
+Route::get('/charts/palladium-price-per-ounce', [App\Http\Controllers\User\ChartController::class, 'palladiumPricePerOunce'])->name('charts/palladium-price-per-ounce');
+Route::get('/charts/palladium-price-per-gram', [App\Http\Controllers\User\ChartController::class, 'palladiumPricePerGram'])->name('charts/palladium-price-per-gram');
+Route::get('/charts/palladium-price-per-kilo', [App\Http\Controllers\User\ChartController::class, 'palladiumPricePerKilo'])->name('charts/palladium-price-per-kilo');
+Route::get('/charts/palladium-price-history', [App\Http\Controllers\User\ChartController::class, 'palladiumPriceHistory'])->name('charts/palladium-price-history');
+Route::get('/charts/gold-palladium-ratio', [App\Http\Controllers\User\ChartController::class, 'goldPalladiumRatio'])->name('charts/gold-palladium-ratio');
 
 Route::get('/invitation/{token}', [App\Http\Controllers\Auth\InviteController::class, 'inviteView'])->name('invitation');
 Route::post('/accept-invitation', [App\Http\Controllers\Auth\InviteController::class, 'acceptInvitation'])->name('accept-invitation');
