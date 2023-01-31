@@ -27,8 +27,8 @@
                                 <div class="d-flex align-items-center justify-content-between">
                                     <div>
                                         <h4> Comments </h4>
-                                        <h4 class="text-white mt-3"> 229,559 </h4>
-                                        <h6 class="text-muted"> 9,120 comments this month</h6>
+                                        <h4 class="text-white mt-3"> {{ number_format($total_comments) }} </h4>
+                                        <h6 class="text-muted"> {{ number_format($total_comments_current_month) }} comments this month</h6>
                                     </div>
                                     <div class="icon-box icon-box-bg-image-danger">
                                         <i class="fa-solid fa-comment-dots gradient-card-icon"></i>

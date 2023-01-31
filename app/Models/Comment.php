@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class Comment extends Model
 {
@@ -57,5 +58,17 @@ class Comment extends Model
             $user_id =  Auth::user()->id;
         }
         return $this->hasMany(Reaction::class)->where('action', 0)->where('user_id', $user_id);
+    }
+
+    public function countAllComments()
+    {
+        return $this->count();
+    }
+
+    public function countCommentsOfCurrentMonth()
+    {
+        return $this->whereYear('created_at', Carbon::now()->year)
+            ->whereMonth('created_at', Carbon::now()->month)
+            ->count();
     }
 }
