@@ -22,7 +22,7 @@
             <form class="comment-form" style="display: none;">
                 @csrf
                 <div class="form-group">
-                    <textarea class="form-control comment" name="comment" placeholder="Reply to {{ $comment->user->name }}"></textarea>
+                    <textarea class="form-control comment" name="comment" placeholder="Reply to @if($comment->user->role == 0) Administrator @else {{ $comment->user->name }} @endif"></textarea>
                     <input type="hidden" name="article_id" value="{{ $article_id }}" />
                     <input type="hidden" name="parent_id" value="{{ $comment->id }}" />
                     <input type="hidden" name="depth" value="{{ $comment->depth+1 }}" />
