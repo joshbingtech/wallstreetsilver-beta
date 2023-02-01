@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Pagination\Paginator;
+use App\Models\SocialMedia;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,20 +39,25 @@ class AppServiceProvider extends ServiceProvider
             array("name" => "Jim Lewis", "thumbnail" => "images/avatars/Jim.png", "contact_link" => "https://www.linkedin.com/in/wallstreetsilver/"),
             array("name" => "Ivan Bayoukhi", "thumbnail" => "images/avatars/Ivan.png", "contact_link" => "https://www.linkedin.com/in/ivanbayoukhi/"),
         );
-        $social_links = array(
-            "twitter" => "https://twitter.com/WallStreetSilv",
-            "youtube" => "https://www.youtube.com/c/WallStreetSilverOfficial",
-            "reddit" => "https://www.reddit.com/r/Wallstreetsilver",
-            "discord" => "https://discord.com/invite/JPHFPBNNqg",
-            "instagram" => "https://www.instagram.com/wallstreetsilver",
-            "linkedin" => "https://www.linkedin.com/in/wallstreetsilver",
-            "facebook" => "https://www.facebook.com/Wall-Street-Silver-103206701843254",
-            //"podbeen" => "https://wallstreetsilverofficial.podbean.com",
-            "rumble" => "https://rumble.com/c/WallStreetSilver",
-            "odysee" => "https://odysee.com/@WallStreetSilver:e",
-            "gab" => "https://gab.com/WallStreetSilverOfficial",
-            "telegram" => "https://t.me/WallStreetSilver",
-        );
+        
+        $social_links = SocialMedia::all();
+        if(!count($social_links)) {
+            $social_links = array(
+                array("service" => "twitter", "url" => "https://twitter.com/WallStreetSilv"),
+                array("service" => "youtube", "url" => "https://www.youtube.com/c/WallStreetSilverOfficial"),
+                array("service" => "reddit", "url" => "https://www.reddit.com/r/Wallstreetsilver"),
+                array("service" => "discord", "url" => "https://discord.com/invite/JPHFPBNNqg"),
+                array("service" => "instagram", "url" => "https://www.instagram.com/wallstreetsilver"),
+                array("service" => "linkedin", "url" => "https://www.linkedin.com/in/wallstreetsilver"),
+                array("service" => "facebook", "url" => "https://www.facebook.com/Wall-Street-Silver-103206701843254"),
+                array("service" => "podbeen", "url" => "https://wallstreetsilverofficial.podbean.com"),
+                array("service" => "rumble", "url" => "https://rumble.com/c/WallStreetSilver"),
+                array("service" => "odysee", "url" => "https://odysee.com/@WallStreetSilver:e"),
+                array("service" => "gab", "url" => "https://gab.com/WallStreetSilverOfficial"),
+                array("service" => "telegram", "url" => "https://t.me/WallStreetSilver"),
+            );
+        }
+        
         $current_nav_tab = '';
         View::share('supporters', $supporters);
         View::share('contacts', $contacts);

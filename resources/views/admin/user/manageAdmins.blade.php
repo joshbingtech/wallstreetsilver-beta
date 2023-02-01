@@ -44,7 +44,7 @@
                     <form class="pt-3" autocomplete="off">
                         @csrf
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control form-control-lg " name="email" value="" placeholder="Email Address" required="" autocomplete="off">
+                            <input id="email" type="email" class="form-control form-control-lg" name="email" value="" placeholder="Email Address" required="" autocomplete="off">
                         </div>
                         <div class="modal-button-group">
                             <button id="create-admin-btn" type="button" class="btn btn-gradient-success"> Create </button>
@@ -87,8 +87,8 @@
 		);
 
         $("#create-admin-btn").click(function(e) {
-
             e.preventDefault();
+            
             $(".modal-button-group button").hide();
             $(".dot-opacity-loader").show();
 

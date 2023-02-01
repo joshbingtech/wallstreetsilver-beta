@@ -18,10 +18,10 @@
                 </thead>
                 <tbody>
                     @foreach ($services as $service)
-                        <tr data-service="{{ $service['id'] }}">
+                        <tr data-service_id="{{ $service['id'] }}" data-service_name="{{ $service['service'] }}" data-service_url="{{ $service['url'] }}">
                             <td class="text-center"> {{ $service['id'] }} </td>
                             <td class="text-center"> {{ $service['service'] }} </td>
-                            <td class="text-center"> {{ $service['url'] }} </td>
+                            <td> {{ $service['url'] }} </td>
                             <td class="text-center">
                                 <a href="#" class="edit-btn icon-action"><i class="fa-solid fa-file-pen"></i></a>
                             </td>
@@ -47,10 +47,41 @@
                     <form class="pt-3" autocomplete="off">
                         @csrf
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control form-control-lg " name="email" value="" placeholder="Service" required="" autocomplete="off">
+                            <input id="service" type="text" class="form-control form-control-lg" value="" placeholder="Service Name" required="" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input id="url" type="text" class="form-control form-control-lg" value="" placeholder="Service URL" required="" autocomplete="off">
                         </div>
                         <div class="modal-button-group">
                             <button id="add-service-btn" type="button" class="btn btn-gradient-success"> Add </button>
+                            <button type="button" class="btn btn-light" data-bs-dismiss="modal"> Close </button>
+                            <div class="dot-opacity-loader" style="display: none;">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="editServiceModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4 class="text-center"> Edit service </h4>
+                    <form class="pt-3" autocomplete="off">
+                        @csrf
+                        <input id="edit_service_id" type="hidden">
+                        <div class="form-group">
+                            <input id="edit_service_name" type="text" class="form-control form-control-lg" value="" placeholder="Service Name" required="" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <input id="edit_service_url" type="text" class="form-control form-control-lg" value="" placeholder="Service URL" required="" autocomplete="off">
+                        </div>
+                        <div class="modal-button-group">
+                            <button id="edit-service-btn" type="button" class="btn btn-gradient-success"> Save changes </button>
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal"> Close </button>
                             <div class="dot-opacity-loader" style="display: none;">
                                 <span></span>
@@ -81,13 +112,112 @@
             columnDefs: [
                 { orderable: false, targets: [3, 4] }
             ],
-            order: [[0, 'dec']],
+            order: [[0, 'asc']],
             scrollX: true
         });
 
         $("div.create-service-btn").html(
 			'<button class="btn btn-gradient-primary btn-lg" data-bs-toggle="modal" data-bs-target="#addServiceModal"> Add a new service </button>'
 		);
+
+        $("#add-service-btn").click(function(e) {
+            e.preventDefault();
+            $(".is-invalid").removeClass("is-invalid");
+            $(".invalid-feedback").remove();
+
+            $(".modal-button-group button").hide();
+            $(".modal-button-group .dot-opacity-loader").show();
+
+            $.ajax({
+                type:'POST',
+                url:"{{ route('admin/add-sns') }}",
+                data:{
+                    service: $("#service").val(),
+                    url: $("#url").val()
+                },
+                success:function(response){
+                    $(".modal-button-group button").show();
+                    $(".modal-button-group .dot-opacity-loader").hide();
+
+                    if(response.status) {
+                        location.reload();
+                    } else {
+                        if(response.message == "Unable to add a new service.") {
+                            location.reload();
+                        } else {
+                            var errors = response.message
+                            $.each(errors, function(key, error) {
+                                if(key == "service") {
+                                    $("#service").addClass("is-invalid");
+                                    $("#service").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
+                                } else if(key == "url") {
+                                    $("#url").addClass("is-invalid");
+                                    $("#url").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        });
+
+        $(".edit-btn").click(function(e) {
+            e.preventDefault();
+
+            var edit_btn = $(this);
+            var service_id = $(this).parent().parent().data("service_id");
+            var service_name = $(this).parent().parent().data("service_name");
+            var service_url = $(this).parent().parent().data("service_url");
+
+            $("#edit_service_id").val(service_id);
+            $("#edit_service_name").val(service_name);
+            $("#edit_service_url").val(service_url);
+
+            $("#editServiceModal").modal("show");
+        });
+
+        $("#edit-service-btn").click(function(e) {
+            e.preventDefault();
+            $(".is-invalid").removeClass("is-invalid");
+            $(".invalid-feedback").remove();
+
+            $(".modal-button-group button").hide();
+            $(".modal-button-group .dot-opacity-loader").show();
+
+            $.ajax({
+                type:'POST',
+                url:"{{ route('admin/edit-sns') }}",
+                data:{
+                    service_id: $("#edit_service_id").val(),
+                    service: $("#edit_service_name").val(),
+                    url: $("#edit_service_url").val()
+                },
+                success:function(response){
+                    $(".modal-button-group button").show();
+                    $(".modal-button-group .dot-opacity-loader").hide();
+
+                    if(response.status) {
+                        location.reload();
+                    } else {
+                        if(response.message == "Unable to edit the service.") {
+                            location.reload();
+                        } else {
+                            var errors = response.message
+                            $.each(errors, function(key, error) {
+                                
+                                if(key == "service") {
+                                    $("#edit_service_name").addClass("is-invalid");
+                                    $("#edit_service_name").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
+                                } else if(key == "url") {
+                                    $("#edit_service_url").addClass("is-invalid");
+                                    $("#edit_service_url").after('<span class="invalid-feedback" role="alert"><strong>' + error + '</strong></span>');
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        });
 
         $(".delete-btn").click(function(e) {
             e.preventDefault();

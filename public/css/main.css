@@ -17,9 +17,16 @@ body {
 }
 #navbar .social-link {
     display: inline-block;
+    line-height: 45px;
+    text-decoration: none;
+    vertical-align: top;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+}
+#navbar .social-link:hover {
+    color: #FFFFFF;
 }
 #navbar .social-link img{
-    width: 45px;
     height: 45px;
     padding: 2px;
 }

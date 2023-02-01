@@ -1,8 +1,14 @@
 <ul class="navbar-nav me-auto">
     <li class="nav-item nav-item-empty"></li>
     <div>
-        @foreach ($social_links as $key => $social_link)
-            <a class="social-link" href="{{ $social_link }}" target="_blank"><img src="{{ asset('images/icons/'.$key.'-logo.png') }}"></a>
+        @foreach ($social_links as $social_link)
+            <a class="social-link" href="{{ $social_link['url'] }}" target="_blank" title={{ ucfirst(strtolower($social_link['service'])) }}>
+                @if (file_exists(public_path('images/icons/'.strtolower($social_link['service']).'-logo.png')))
+                    <img src="{{ asset('images/icons/'.strtolower($social_link['service']).'-logo.png') }}">
+                @else
+                    {{ ucfirst(strtolower($social_link['service'])) }}
+                @endif
+            </a>
         @endforeach
     </div>
 </ul>

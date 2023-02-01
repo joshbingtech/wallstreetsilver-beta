@@ -43,6 +43,8 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
 
     //manage settings
     Route::get('/manage-sns', [App\Http\Controllers\Admin\SettingsController::class, 'manageSNS'])->name('admin/manage-sns');
+    Route::post('/add-sns', [App\Http\Controllers\Admin\SettingsController::class, 'addSNS'])->name('admin/add-sns');
+    Route::post('/edit-sns', [App\Http\Controllers\Admin\SettingsController::class, 'editSNS'])->name('admin/edit-sns');
     Route::post('/delete-sns', [App\Http\Controllers\Admin\SettingsController::class, 'deleteSNS'])->name('admin/delete-sns');
     Route::get('/manage-sponsors', [App\Http\Controllers\Admin\SettingsController::class, 'manageSponsors'])->name('admin/manage-sponsors');
     Route::get('/manage-other-settings', [App\Http\Controllers\Admin\SettingsController::class, 'manageOtherSettings'])->name('admin/manage-other-settings');
