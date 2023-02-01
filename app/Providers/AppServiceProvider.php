@@ -40,8 +40,7 @@ class AppServiceProvider extends ServiceProvider
             array("name" => "Ivan Bayoukhi", "thumbnail" => "images/avatars/Ivan.png", "contact_link" => "https://www.linkedin.com/in/ivanbayoukhi/"),
         );
         
-        //$social_links = SocialMedia::all();
-        $social_links = array();
+        $social_links = SocialMedia::all();
         if(!count($social_links)) {
             $social_links = array(
                 array("service" => "twitter", "url" => "https://twitter.com/WallStreetSilv"),
