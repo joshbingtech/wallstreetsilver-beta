@@ -25,7 +25,7 @@ class UserController extends Controller
             'current_nav_tab' => 'users',
             'admins' => $admins,
         ];
-        return view('admin/manageAdmins', $data);
+        return view('admin/user/manageAdmins', $data);
     }
 
     public function manageJournalists()
@@ -38,7 +38,7 @@ class UserController extends Controller
             'current_nav_tab' => 'users',
             'journalists' => $journalists,
         ];
-        return view('admin/manageJournalists', $data);
+        return view('admin/user/manageJournalists', $data);
     }
 
     public function manageUsers()
@@ -51,7 +51,7 @@ class UserController extends Controller
             'current_nav_tab' => 'users',
             'users' => $users,
         ];
-        return view('admin/manageUsers', $data);
+        return view('admin/user/manageUsers', $data);
     }
 
     public function createAdmin(Request $request)

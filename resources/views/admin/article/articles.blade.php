@@ -10,12 +10,14 @@
                 <thead>
                     <tr>
                         <th class="text-center"> Article # </th>
-                        <th class="text-center"> Thumbnail</th>
+                        <th class="text-center"> Thumbnail </th>
                         <th class="text-center"> Title </th>
                         <th class="text-center"> Description </th>
                         <th class="text-center"> Views </th>
+                        <th class="text-center"> Comments </th>
                         <th class="text-center"> Created By </th>
                         <th class="text-center"> Created At </th>
+                        <th class="text-center"> View </th>
                         <th class="text-center"> Edit </th>
                         <th class="text-center"> Delete </th>
                     </tr>
@@ -28,8 +30,10 @@
                             <td class="text-center"> {{ $article['title'] }} </td>
                             <td> {{ character_limiter($article['description'], 200) }} </td>
                             <td class="text-center"> {{ $article['views'] }} </td>
+                            <td class="text-center"> {{ count($article->commentsAndReplies) }} </td>
                             <td class="text-center"> {{ $article['name'] }} </td>
                             <td class="text-center"> {{ $article['created_at'] }} </td>
+                            <td class="text-center"> <a href="{{ route('display-article', base64_encode($article['id'])) }}" class="icon-action"><i class="fa-solid fa-eye"></i></a> </td>
                             <td class="text-center"> <a href="{{ route('admin/edit-article-view', $article['id']) }}" class="icon-action"><i class="fa-solid fa-file-pen"></i></a> </td>
                             <td class="text-center">
                                 <a href="#" class="delete-btn icon-action"><i class="fa-solid fa-trash"></i></a>
@@ -63,9 +67,9 @@
             columnDefs: [
                 { "width": "200px", "targets": 1 },
                 { "width": "600px", "targets": 3 },
-                { orderable: false, targets: [1, 7, 8] }
+                { orderable: false, targets: [1, 8, 9, 10] }
             ],
-            order: [[0, 'asc']],
+            order: [[0, 'dec']],
             scrollX: true
         });
 

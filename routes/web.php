@@ -20,6 +20,7 @@ Auth::routes();
 
 // routes for admins
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
+    // manage articles and comments
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin/dashboard');
     Route::get('/articles', [App\Http\Controllers\Admin\ArticleController::class, 'index'])->name('admin/articles');
     Route::get('/create-article', [App\Http\Controllers\Admin\ArticleController::class, 'createView'])->name('admin/create-article-view');
@@ -30,6 +31,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
     Route::post('/delete-comment', [App\Http\Controllers\Admin\ArticleController::class, 'deleteComment'])->name('admin/delete-comment');
     Route::post('/restore-comment', [App\Http\Controllers\Admin\ArticleController::class, 'restoreComment'])->name('admin/restore-comment');
 
+    //manage users
     Route::get('/manage-admins', [App\Http\Controllers\Admin\UserController::class, 'manageAdmins'])->name('admin/manage-admins');
     Route::get('/manage-journalists', [App\Http\Controllers\Admin\UserController::class, 'manageJournalists'])->name('admin/manage-journalists');
     Route::get('/manage-users', [App\Http\Controllers\Admin\UserController::class, 'manageUsers'])->name('admin/manage-users');
@@ -38,6 +40,12 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
     Route::post('/create-user', [App\Http\Controllers\Admin\UserController::class, 'createUser'])->name('admin/create-user');
     Route::post('/lock-user', [App\Http\Controllers\Admin\UserController::class, 'lockUser'])->name('admin/lock-user');
     Route::post('/unlock-user', [App\Http\Controllers\Admin\UserController::class, 'unlockUser'])->name('admin/unlock-user');
+
+    //manage settings
+    Route::get('/manage-sns', [App\Http\Controllers\Admin\SettingsController::class, 'manageSNS'])->name('admin/manage-sns');
+    Route::post('/delete-sns', [App\Http\Controllers\Admin\SettingsController::class, 'deleteSNS'])->name('admin/delete-sns');
+    Route::get('/manage-sponsors', [App\Http\Controllers\Admin\SettingsController::class, 'manageSponsors'])->name('admin/manage-sponsors');
+    Route::get('/manage-other-settings', [App\Http\Controllers\Admin\SettingsController::class, 'manageOtherSettings'])->name('admin/manage-other-settings');
 });
 
 // routes for journalists

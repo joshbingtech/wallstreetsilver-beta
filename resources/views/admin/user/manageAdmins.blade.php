@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th class="text-center"> # </th>
-                        <th class="text-center"> Name</th>
+                        <th class="text-center"> Name </th>
                         <th class="text-center"> Email </th>
                         <th class="text-center"> Status </th>
                         <th class="text-center"> Member Since </th>
@@ -37,14 +37,14 @@
         </div>
     </div>
     <div class="modal fade" id="createAdminModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h4 class="text-center">Create a new administrator</h4>
-                    <form class="pt-3">
+                    <h4 class="text-center"> Create a new administrator </h4>
+                    <form class="pt-3" autocomplete="off">
                         @csrf
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control form-control-lg " name="email" value="" placeholder="Email Address" required="" autocomplete="email" autofocus="">
+                            <input id="email" type="email" class="form-control form-control-lg " name="email" value="" placeholder="Email Address" required="" autocomplete="off">
                         </div>
                         <div class="modal-button-group">
                             <button id="create-admin-btn" type="button" class="btn btn-gradient-success"> Create </button>

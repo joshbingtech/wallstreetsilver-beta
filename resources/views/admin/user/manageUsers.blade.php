@@ -10,7 +10,7 @@
                 <thead>
                     <tr>
                         <th class="text-center"> # </th>
-                        <th class="text-center"> Name</th>
+                        <th class="text-center"> Name </th>
                         <th class="text-center"> Email </th>
                         <th class="text-center"> Status </th>
                         <th class="text-center"> Member Since </th>
@@ -23,13 +23,13 @@
                             <td class="text-center"> {{ $user['id'] }} </td>
                             <td class="text-center"> {{ $user['name'] }} </td>
                             <td class="text-center"> {{ $user['email'] }} </td>
-                            @if($user['deleted_at'])
+                            @if($user->trashed())
                                 <td class="text-center">
                                     <label class="badge badge-outline-danger"> Locked at {{ $user['deleted_at'] }} </label>
                                 </td>
                                 <td class="text-center"> {{ $user['created_at'] }} </td>
                                 <td class="text-center">
-                                    <a href="#" class="unlock-btn icon-action"><i class="fa-solid fa-unlock"></i></a>
+                                    <a href="#" class="unlock-btn icon-action" title="Unlock user"><i class="fa-solid fa-unlock"></i></a>
                                     <div class="dot-opacity-loader" style="display: none;">
                                         <span></span>
                                         <span></span>
@@ -48,7 +48,7 @@
                                 @endif
                                 <td class="text-center"> {{ $user['created_at'] }} </td>
                                 <td class="text-center">
-                                    <a href="#" class="lock-btn icon-action"><i class="fa-solid fa-lock"></i></a>
+                                    <a href="#" class="lock-btn icon-action" title="Lock user"><i class="fa-solid fa-lock"></i></a>
                                     <div class="dot-opacity-loader" style="display: none;">
                                         <span></span>
                                         <span></span>
@@ -63,14 +63,14 @@
         </div>
     </div>
     <div class="modal fade" id="createUserModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <h4 class="text-center">Create a new user</h4>
-                    <form class="pt-3">
+                    <h4 class="text-center"> Create a new user </h4>
+                    <form class="pt-3" autocomplete="off">
                         @csrf
                         <div class="form-group">
-                            <input id="email" type="email" class="form-control form-control-lg " name="email" value="" placeholder="Email Address" required="" autocomplete="email" autofocus="">
+                            <input id="email" type="email" class="form-control form-control-lg " name="email" value="" placeholder="Email Address" required="" autocomplete="off">
                         </div>
                         <div class="modal-button-group">
                             <button id="create-user-btn" type="button" class="btn btn-gradient-success"> Create </button>

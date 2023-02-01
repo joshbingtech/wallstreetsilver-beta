@@ -23,14 +23,14 @@ class ArticleController extends Controller
             'current_nav_tab' => 'articles',
             'articles' => $articles,
         ];
-        return view('admin/articles', $data);
+        return view('admin/article/articles', $data);
     }
     public function createView()
     {
         $data = [
             'current_nav_tab' => 'articles',
         ];
-        return view('admin/createArticle', $data);
+        return view('admin/article/createArticle', $data);
     }
 
     public function createArticle(Request $request)
@@ -70,7 +70,7 @@ class ArticleController extends Controller
                 'current_nav_tab' => 'articles',
                 'article' => $article,
             ];
-            return view('admin/editArticle', $data);
+            return view('admin/article/editArticle', $data);
         } else {
             abort(404);
         }

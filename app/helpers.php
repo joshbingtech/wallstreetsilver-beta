@@ -1,5 +1,5 @@
 <?php
-function character_limiter($str, $n = 500, $end_char = '&#8230;')
+function character_limiter($str, $n = 500, $end_char = ' &#8230;')
 {
     $str = strip_tags($str);
     if (strlen($str) < $n)

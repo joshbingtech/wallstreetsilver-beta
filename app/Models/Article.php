@@ -26,6 +26,11 @@ class Article extends Model
         return $this->hasMany(Comment::class)->whereNull('parent_id')->withTrashed();
     }
 
+    public function commentsAndReplies()
+    {
+        return $this->hasMany(Comment::class)->withTrashed();
+    }
+
     public function countAllArticles()
     {
         return $this->count();
