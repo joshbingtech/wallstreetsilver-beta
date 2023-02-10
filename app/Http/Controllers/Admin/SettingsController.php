@@ -14,8 +14,8 @@ class SettingsController extends Controller
     public function manageSNS()
     {
         $data = [
-            'current_nav_tab' => 'settings',
             'services' => SocialMedia::all(),
+            'current_nav_tab' => 'settings',
         ];
         return view('admin/settings/manageSNS', $data);
     }
@@ -121,8 +121,8 @@ class SettingsController extends Controller
     public function manageSupporters()
     {
         $data = [
-            'current_nav_tab' => 'settings',
             'supporters' => Supporter::all(),
+            'current_nav_tab' => 'settings',
         ];
         return view('admin/settings/manageSupporters', $data);
     }
