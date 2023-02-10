@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $supporters = Supporter::all();
+        //$supporters = Supporter::all();
         if(!count($supporters)) {
             $supporters = array(
                 array("src" => "images/supporters/AbraSilver.png", "url" => "https://www.abrasilver.com/news-releases/"),
