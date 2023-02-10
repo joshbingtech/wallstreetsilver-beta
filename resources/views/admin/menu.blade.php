@@ -17,7 +17,7 @@
         <a href="#" class="nav-link dropdown-toggle @if ($current_nav_tab == "settings") nav-link-active @endif" role="button" data-bs-toggle="dropdown"> Settings </a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ route('admin/manage-sns') }}"> SNS </a></li>
-            <li><a class="dropdown-item" href="{{ route('admin/manage-sponsors') }}"> Sponsors </a></li>
+            <li><a class="dropdown-item" href="{{ route('admin/manage-supporters') }}"> Supporters </a></li>
             <li><a class="dropdown-item" href="{{ route('admin/manage-other-settings') }}"> Other Settings </a></li>
         </ul>
     </li>

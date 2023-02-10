@@ -46,7 +46,11 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function() {
     Route::post('/add-sns', [App\Http\Controllers\Admin\SettingsController::class, 'addSNS'])->name('admin/add-sns');
     Route::post('/edit-sns', [App\Http\Controllers\Admin\SettingsController::class, 'editSNS'])->name('admin/edit-sns');
     Route::post('/delete-sns', [App\Http\Controllers\Admin\SettingsController::class, 'deleteSNS'])->name('admin/delete-sns');
-    Route::get('/manage-sponsors', [App\Http\Controllers\Admin\SettingsController::class, 'manageSponsors'])->name('admin/manage-sponsors');
+    
+    Route::get('/manage-supporters', [App\Http\Controllers\Admin\SettingsController::class, 'manageSupporters'])->name('admin/manage-supporters');
+    Route::post('/add-supporter', [App\Http\Controllers\Admin\SettingsController::class, 'addSupporter'])->name('admin/add-supporter');
+    Route::post('/edit-supporter', [App\Http\Controllers\Admin\SettingsController::class, 'editSupporter'])->name('admin/edit-supporter');
+    Route::post('/delete-supporter', [App\Http\Controllers\Admin\SettingsController::class, 'deleteSupporter'])->name('admin/delete-supporter');
     Route::get('/manage-other-settings', [App\Http\Controllers\Admin\SettingsController::class, 'manageOtherSettings'])->name('admin/manage-other-settings');
 });
 

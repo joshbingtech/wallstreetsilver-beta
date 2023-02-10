@@ -26,7 +26,7 @@ body {
 #navbar .social-link:hover {
     color: #FFFFFF;
 }
-#navbar .social-link img{
+#navbar .social-link img {
     height: 45px;
     padding: 2px;
 }
@@ -945,3 +945,12 @@ table.dataTable.stripe tr.odd {
     cursor: pointer;
 }
 /* Comments */
+
+/* Settings */
+#supporter-company-logo {
+    margin: 0 auto;
+}
+#edit-supporter-company-logo {
+    margin: 0 auto;
+}
+/* Settings */
