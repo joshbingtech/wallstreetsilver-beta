@@ -77,12 +77,6 @@
             </div>
         </div>
     </li>
-    <li class="nav-item">
-        <a href="#" class="nav-link"> MERCH </a>
-    </li>
-    <li class="nav-item">
-        <a href="#" class="nav-link"> ABOUT </a>
-    </li>
     <li class="nav-item nav-item-empty"></li>
     @guest
         @if (Route::has('login'))

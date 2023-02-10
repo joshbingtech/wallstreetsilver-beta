@@ -30,8 +30,8 @@
             <div class="col-md-8 my-2">
             <div class="jcarousel" style="width:100%;">
                 <ul>
-                    @foreach ($supporters as $supporter)
-                        <li><a href="{{ $supporter['url'] }}"><img src="{{ asset($supporter['src']) }}" /></a></li>
+                    @foreach ($supporters_for_carousel as $supporter)
+                        <li><a href="{{ $supporter['url'] }}" target="_blank"><img src="{{ asset($supporter['src']) }}" /></a></li>
                     @endforeach
                 </ul>
             </div>
