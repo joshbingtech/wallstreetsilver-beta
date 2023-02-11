@@ -5,6 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Tweet;
+use App\Models\YoutubeVideo;
+
 use Twitter;
 use Alaouy\Youtube\Facades\Youtube;
 
@@ -12,23 +15,14 @@ class HomeController extends Controller
 {
     public function index()
     {
-
-        $videoList = Youtube::listChannelVideos('UCXWoMTRWJTIZwUblljo5aDQ', 1, 'date');
-        $youtube_latest_video_id = $videoList[0]->id->videoId;
-
         $article = new Article;
 
-        $params = [
-            'tweet.fields' => 'text,created_at,id,attachments',
-            'expansions' => 'author_id,attachments.media_keys',
-            'media.fields' => 'alt_text,url,preview_image_url,variants',
-            'user.fields' => 'username',
-            'exclude' => 'retweets,replies',
-            'max_results' => 5,
-        ];
+        $youtube_video_id = YoutubeVideo::first()->youtube_video_id;
 
         $tweets = array();
-        $json = Twitter::userTweets('1366565625401909249', $params);
+        
+        $json = Tweet::first()->tweets;
+        //var_dump($json); exit();
         $array = json_decode($json, true);
         $tweets_array = $array['data'];
         $tweets_array = array_slice($array['data'], 0, 3);
@@ -77,7 +71,7 @@ class HomeController extends Controller
             'tweets' => $tweets,
             'articles' => $article->getArticles(),
             'articles_for_carousel' => $article->getArticlesForCarousel(),
-            'youtube_video_id' => $youtube_latest_video_id,
+            'youtube_video_id' => $youtube_video_id,
             'current_nav_tab' => 'home',
         ];
         return view('user/home', $data);
