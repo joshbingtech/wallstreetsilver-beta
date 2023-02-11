@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
             //get the latest youtube video ID and store it
             $videoList = Youtube::listChannelVideos('UCXWoMTRWJTIZwUblljo5aDQ', 1, 'date');
             $youtube_video_id = YoutubeVideo::updateOrCreate(
-                ['id' => 3],
+                ['id' => 1],
                 ['youtube_video_id' => $videoList[0]->id->videoId]
             );
 
@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
             ];
             $json = Twitter::userTweets('1366565625401909249', $params);
             $tweets = Tweet::updateOrCreate(
-                ['id' => 5],
+                ['id' => 1],
                 ['tweets' => $json]
             );
         })->hourly();
