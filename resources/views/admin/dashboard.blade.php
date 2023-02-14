@@ -126,7 +126,6 @@
 
         var users_data = [
             { name: "Admin", y: {{ $total_admins }}, color: "#33BF8C"},
-            { name: "Journalist", y: {{ $total_journalists }}, color: "#F2B604"},
             { name: "User", y: {{ $total_users }}, color: "#F95360"},
         ];
 
