@@ -365,9 +365,9 @@ a.nav-link {
 .banner {
     width: 100%;
 }
-.featured-articles .article-link {
-    text-decoration: none;
-    color: #FFFFFF;
+.article-link {
+    text-decoration: none!important;
+    color: #FFFFFF!important;
 }
 .featured-articles .article {
     padding: 5px;

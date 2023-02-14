@@ -9,7 +9,7 @@
         <a href="#" class="nav-link dropdown-toggle @if ($current_nav_tab == "users") nav-link-active @endif" role="button" data-bs-toggle="dropdown"> Users </a>
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ route('admin/manage-admins') }}"> Administrators </a></li>
-            <li><a class="dropdown-item" href="{{ route('admin/manage-journalists') }}"> Journalists </a></li>
+            {{-- <li><a class="dropdown-item" href="{{ route('admin/manage-journalists') }}"> Journalists </a></li> --}}
             <li><a class="dropdown-item" href="{{ route('admin/manage-users') }}"> Users </a></li>
         </ul>
     </li>
@@ -18,7 +18,7 @@
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ route('admin/manage-sns') }}"> SNS </a></li>
             <li><a class="dropdown-item" href="{{ route('admin/manage-supporters') }}"> Supporters </a></li>
-            <li><a class="dropdown-item" href="{{ route('admin/manage-other-settings') }}"> Other Settings </a></li>
+            {{-- <li><a class="dropdown-item" href="{{ route('admin/manage-other-settings') }}"> Other Settings </a></li> --}}
         </ul>
     </li>
     <li class="nav-item nav-item-empty"></li>
