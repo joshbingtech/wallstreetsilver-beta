@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-lg-4">
             <div class="auth-form text-left">
-                <img class="banner mb-3" src="{{ asset('images/banner.png') }}" />
+                <img class="banner mb-3" src="{{ asset('images/logo.png') }}" />
                 <h4> We just like Silver. </h4>
                 <h6 class="font-weight-light"> Sign in to continue. </h6>
                 <form class="pt-3" method="POST" action="{{ route('login') }}">
