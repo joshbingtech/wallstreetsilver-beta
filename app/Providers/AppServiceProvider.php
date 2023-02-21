@@ -53,7 +53,7 @@ class AppServiceProvider extends ServiceProvider
                 array("service" => "discord", "url" => "https://discord.com/invite/JPHFPBNNqg"),
                 array("service" => "instagram", "url" => "https://www.instagram.com/wallstreetsilver"),
                 array("service" => "facebook", "url" => "https://www.facebook.com/Wall-Street-Silver-103206701843254"),
-                array("service" => "podbeen", "url" => "https://wallstreetsilverofficial.podbean.com"),
+                array("service" => "podbean", "url" => "https://wallstreetsilverofficial.podbean.com"),
                 array("service" => "rumble", "url" => "https://rumble.com/c/WallStreetSilver"),
                 array("service" => "odysee", "url" => "https://odysee.com/@WallStreetSilver:e"),
                 array("service" => "gab", "url" => "https://gab.com/WallStreetSilverOfficial"),
